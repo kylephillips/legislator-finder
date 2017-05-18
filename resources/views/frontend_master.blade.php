@@ -12,6 +12,6 @@
 </head>
 <body>
 	@yield('content')
-	<div class="sunlight">Data provided by the <a href="http://sunlightfoundation.com">Sunlight Foundation</a></div>
+	<div class="sunlight">Data provided by <a href="https://openstates.org/">Open States</a></div>
 </body>
 </html>
