@@ -32,7 +32,7 @@
 		</p>
 		
 		<a href="#" id="getcoordinates" style="display:none;" class="btn btn-red">
-			<i class="icon-location-arrow"></i> Use My Location
+			<i class="icon-near_me"></i> Use My Location
 		</a>
 		
 		<section class="by-address">
