@@ -117,6 +117,26 @@ class LegislatorController extends Controller
 
 		// set the variable used to retrieve the map coordinates
 		$district_map_id = $stateLower . '-' . $district;
+		$boundary_id = $legislator['ocd_id'];
+
+		// lookup the district boundary for the current legislator
+		try {
+			$boundary_client = new Client();
+			$boundary_feed = "openstates.org/api/v1/districts/boundary/$boundary_id";
+			$boundary_response = $boundary_client->get($boundary_feed, [
+				'query' => [
+					'apikey' => $sunlight_key
+				]
+			]);		
+			$boundary_data = $boundary_response->json();
+			$center_lat = $boundary_data['region']['center_lat'];
+			$center_lon = $boundary_data['region']['center_lon'];
+			$coordinates = $boundary_data['shape'][0][0];
+		} catch (\Exception $e){
+			$center_lat = false;
+			$center_lon = false;
+			$coordinates = false;
+		}
 	
 		// Return view with necessary data
 		return view('templates.federal')
@@ -126,6 +146,7 @@ class LegislatorController extends Controller
 			->with('term_start', $term_start)
 			->with('term_end', $term_end)
 			->with('district', $district)
+			->with('coordinates', $coordinates)
 			->with('district_map_id', $district_map_id);
 	}
 	

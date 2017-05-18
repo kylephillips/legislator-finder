@@ -8,7 +8,7 @@ Route::get('state/{id?}', array('as'=>'state_results','uses'=>'LegislatorControl
 
 
 Route::get('404', array('as'=>'missing_page', function(){
-	return View::make('templates.missing');
+	return view('templates.missing');
 }));
 
 // 404 page
