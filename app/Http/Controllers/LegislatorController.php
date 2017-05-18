@@ -159,15 +159,20 @@ class LegislatorController extends Controller
 		$chamber_short = ( $legislator['chamber'] == "upper" ) ? "u" : "l";
 
 		// boundary id for fetching district boundary
-		$boundary_id = 'sld' . $chamber_short . '/' . $legislator['state'] . '-' . $legislator['district'];
+		$boundary_id = 'sld' . $chamber_short . ':' . $legislator['district'];
 
 		// lookup the district boundary for the current legislator
-		$boundary_feed = "openstates.org/api/v1//districts/boundary/$boundary_id/?apikey=$sunlight_key";
-		$boundary_data = \Str::load_curl($boundary_feed,"state");
-
-		$center_lat = $boundary_data->region->center_lat;
-		$center_lon = $boundary_data->region->center_lon;
-		$coordinates = $boundary_data->shape[0][0];
+		$boundary_client = new Client();
+		$boundary_feed = "openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . $legislator['state'] . "/$boundary_id";
+		$boundary_response = $boundary_client->get($boundary_feed, [
+			'query' => [
+				'apikey' => $sunlight_key
+				]
+		]);		
+		$boundary_data = $boundary_response->json();
+		$center_lat = $boundary_data['region']['center_lat'];
+		$center_lon = $boundary_data['region']['center_lon'];
+		$coordinates = $boundary_data['shape'][0][0];
 		
 		return view('templates.state')
 			->with('legislator',$legislator)

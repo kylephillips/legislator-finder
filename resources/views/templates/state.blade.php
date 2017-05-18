@@ -13,43 +13,43 @@
 				
 		<article>
 			<h1>
-				@if( $legislator->chamber == "upper" )
+				@if( $legislator['chamber'] == "upper" )
 				Senator
 				@else
 				Representative
 				@endif
-				{{$legislator->full_name}}
+				{{$legislator['full_name']}}
 			</h1>
-			<h3>{{$legislator->party}}, District {{$legislator->district}}</h3>
-			<p><strong>Current Term: </strong>{{$current_term->term}}</p>
+			<h3>{{$legislator['party']}}, District {{$legislator['district']}}</h3>
+			<p><strong>Current Term: </strong>{{$current_term['term']}}</p>
 			
 			@foreach($offices as $office){{-- Show all offices --}}
 			<p>
-				<strong>{{$office->name}}</strong><br />
-				@if($office->phone != "")
+				<strong>{{$office['name']}}</strong><br />
+				@if($office['phone'] != "")
 					<?php
-					$number = $office->phone;
+					$number = $office['phone'];
 					$formatted_number = preg_replace("/^(\d{3})(\d{3})(\d{4})$/", "$1-$2-$3", $number);
 					echo 'Phone: ' . $formatted_number;
 					?>
 				@endif
-				@if($office->email != "")
-				<br /><a href="mailto:{{$office->email}}">Email this office</a>
+				@if($office['email'] != "")
+				<br /><a href="mailto:{{$office['email']}}">Email this office</a>
 				@endif
 			</p>
 			@endforeach
 			
 			<ul>
-				@if ( $legislator->url !== "" )
-				<li class="website"><a href="{{$legislator->url}}" target="_blank">Website</a></li>
+				@if ( $legislator['url'] !== "" )
+				<li class="website"><a href="{{$legislator['url']}}" target="_blank">Website</a></li>
 				@endif
 			</ul>
 			
 		</article>
 		
 		<span>
-			<img src="{{$legislator->photo_url}}" alt="<?php echo $legislator->full_name; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-			{{ Str::party_snipe_state($legislator); }}
+			<img src="{{$legislator['photo_url']}}" alt="<?php echo $legislator['full_name']; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+			{!! \Str::party_snipe_state($legislator) !!}
 		</span>
 		
 	</section>
@@ -61,7 +61,7 @@
 			@foreach($committees as $key=>$comm)
 				@if ( $key > 0 ){{-- First item isn't committee --}}
 				<li>
-					<a href="http://openstates.org/{{$comm->state}}/committees/{{$comm->committee_id}}" target="_blank">{{$comm->committee}} <em>({{$comm->position}})</em></a></li>
+					<a href="http://openstates.org/{{$comm['state']}}/committees/{{$comm['committee_id']}}" target="_blank">{{$comm['committee']}} <em>({{$comm['position']}})</em></a></li>
 				</li>
 				@endif
 			@endforeach
@@ -71,12 +71,12 @@
 	
 	<section class="map">
 		<h3>
-			@if($legislator->chamber == "upper")
+			@if($legislator['chamber'] == "upper")
 			Senate
 			@else
 			House
 			@endif
-			District {{$legislator->district}}
+			District {{$legislator['district']}}
 		</h3>
 		<div id="mapcont"></div>
 	</section>
@@ -95,7 +95,7 @@
 			zoom: 9,
 			mapTypeControl: false,
 			scaleControl: true,
-			styles : {{ Str::map_styles(); }}
+			styles : {!! \Str::map_styles() !!}
 		});
 		
 		var districtpoly;
