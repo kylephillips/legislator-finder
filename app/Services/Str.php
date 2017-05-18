@@ -4,28 +4,8 @@ namespace App\Services;
 /*
 * Extended Str class adds required legislator methods
 */
-class Str extends \Illuminate\Support\Str {
-
-	/*
-	* Load the API and return results
-	*/
-	public static function load_curl($url, $type)
-	{
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-		$data = curl_exec($ch);
-		curl_close($ch);
-		$objs = json_decode($data);
-		
-		if ( $type=="federal" ){
-			return $objs->results;
-		} else {
-			return $objs;
-		}
-		
-	}
-	
+class Str extends \Illuminate\Support\Str 
+{
 	
 	/*
 	* Return the properly formatted legislator name
@@ -42,7 +22,6 @@ class Str extends \Illuminate\Support\Str {
 		}
 		return $out;
 	}
-	
 	
 	/*
 	* Return the legislator party snipe (federal)
@@ -73,7 +52,6 @@ class Str extends \Illuminate\Support\Str {
 		}
 		return $out;
 	}
-	
 	
 	/*
 	* Return the legislator party snipe (state)
@@ -110,7 +88,6 @@ class Str extends \Illuminate\Support\Str {
 		return $out;
 	}
 	
-	
 	/*
 	* Return properly formatted party name
 	*/
@@ -136,7 +113,6 @@ class Str extends \Illuminate\Support\Str {
 		}
 		return $out;
 	}
-	
 	
 	/*
 	* Google Map styles
