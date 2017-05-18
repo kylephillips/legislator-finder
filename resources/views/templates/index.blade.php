@@ -16,7 +16,7 @@
 	
 	{{Form::open(array('url'=>'results/','id'=>'addressform'))}}
 		
-		<h1>Find Your Legislator</h1>
+		<h1>Find Your Legislators</h1>
 
 		<div class="locale-select">
 			<span class="switch"></span>

@@ -345,7 +345,8 @@ nav ul {
   width: 100%;
   background-color: #151442;
   padding: 5px 20px 5px 0;
-  font-weight: 100; }
+  font-weight: 100;
+  font-size: .8em; }
 
 /* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
 .page-loading {
@@ -374,9 +375,10 @@ nav ul {
   margin: 0 auto; }
   /* line 8, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   #addressform h1 {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    font-size: 2.5em; }
 
-/* line 13, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+/* line 14, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
 .locale-select {
   margin-bottom: 50px;
   background-color: #1bbc9b;
@@ -384,7 +386,7 @@ nav ul {
           border-radius: 0;
   position: relative;
   padding: 5px; }
-  /* line 19, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 20, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   .locale-select ul {
     list-style-type: none;
     margin: 0;
@@ -400,12 +402,12 @@ nav ul {
     /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
     .locale-select ul:after {
       clear: both; }
-    /* line 23, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+    /* line 24, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
     .locale-select ul li {
       float: left;
       width: 50%;
       margin: 0; }
-      /* line 27, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+      /* line 28, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
       .locale-select ul li a {
         font-size: 18px;
         display: block;
@@ -414,11 +416,11 @@ nav ul {
         color: #ffffff;
         -webkit-transition: all 200ms ease;
         transition: all 200ms ease; }
-        /* line 34, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+        /* line 35, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
         .locale-select ul li a.active {
           color: #1bbc9b;
           cursor: default; }
-  /* line 41, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 42, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   .locale-select span {
     position: absolute;
     width: 50%;
@@ -428,47 +430,47 @@ nav ul {
     left: 5px;
     -webkit-transition: all 200ms ease;
     transition: all 200ms ease; }
-    /* line 49, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+    /* line 50, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
     .locale-select span.state {
       left: 49%;
       -webkit-transition: all 200ms ease;
       transition: all 200ms ease; }
 
-/* line 58, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+/* line 59, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
 .locale-radios {
   display: none; }
 
-/* line 64, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+/* line 65, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
 #getcoordinates {
   margin: -30px 0 50px 0;
   display: block;
   height: 50px;
   padding: 0;
   line-height: 50px; }
-  /* line 70, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 71, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   #getcoordinates i {
     color: #941d12;
     font-size: 22px;
     margin-right: 5px; }
 
-/* line 79, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+/* line 80, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
 .by-address {
   background-color: rgba(2, 2, 28, 0.45);
   -webkit-border-radius: 4px;
           border-radius: 4px;
   padding: 20px;
   text-align: left; }
-  /* line 84, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 85, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   .by-address p {
     margin-bottom: 15px; }
-  /* line 87, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 88, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   .by-address button {
     clear: both;
     display: block;
     border: 0;
     height: 50px;
     width: 100%; }
-  /* line 96, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  /* line 97, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
   .by-address .half {
     margin-bottom: 25px; }
 
