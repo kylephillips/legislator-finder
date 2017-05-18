@@ -143,7 +143,7 @@ class Str extends \Illuminate\Support\Str {
 	*/
 	public static function map_styles()
 	{
-		return '[
+		$styles = '[
 		  {
 		    "stylers": [
 		      { "visibility": "off" }
@@ -217,6 +217,7 @@ class Str extends \Illuminate\Support\Str {
 		    ]
 		  }
 		]';
+		return $styles;
 	}
 
 }

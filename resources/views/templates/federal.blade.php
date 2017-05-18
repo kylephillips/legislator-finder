@@ -17,10 +17,10 @@
 				@else
 				Representative
 				@endif
-				{{ Str::legislator_name($legislator); }}
+				{{ \Str::legislator_name($legislator) }}
 			</h1>
 			<h3>
-				{{ Str::party_name($legislator); }},
+				{{ \Str::party_name($legislator) }},
 				@if($legislator['chamber'] == "senate")
 				{{$legislator['state_name']}}
 				@else
@@ -52,7 +52,7 @@
 		
 		<span>
 			<img src="{{asset('assets/images/')}}/federal-legislators/{{$legislator['bioguide_id']}}.jpg" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-			{{ Str::party_snipe($legislator); }}
+			{!! \Str::party_snipe($legislator) !!}
 		</span>
 	</section>
 	
@@ -70,12 +70,9 @@
 	
 </div>{{-- Container --}}
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-
 @if($legislator['chamber'] == "house")
 <script>
 	$(document).ready(function(){
-		
 		
 		get_district_boundaries();
 		
@@ -102,7 +99,7 @@
 						mapTypeControl: false,
 						streetViewControl: false,
 						scaleControl : true,
-						styles : {{Str::map_styles();}}
+						styles : {!! \Str::map_styles() !!}
 				    });
 					
 					// create the polygon using the coordinates
@@ -181,7 +178,7 @@
 			  center: state,
 			  zoom: 6,
 			  mapTypeId: 'roadmap',
-			  styles : {{Str::map_styles();}}
+			  styles : {!! \Str::map_styles() !!}
 			});
 
 			layer = new google.maps.FusionTablesLayer({

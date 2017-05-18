@@ -11,7 +11,7 @@
 
 <script type="text/javascript" src="//use.typekit.net/nxo4tar.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBwnquLW4XX1X9iq7PTkdfRA7GsvDOVlJQ"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{env('GOOGLE_MAPS_KEY')}}"></script>
 @include('includes.scripts')
 
 </head>
