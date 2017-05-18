@@ -1,7 +1,7 @@
 @extends('frontend_master')
 
 @section('content')
-	
+
 <div class="page-loading">
 	<div>
 		<p>
@@ -10,7 +10,7 @@
 		</p>
 	</div>
 </div>
-<?php // print_r(Session::all()); ?>
+
 
 <div class="container small home">
 	
