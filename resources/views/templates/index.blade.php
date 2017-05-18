@@ -36,7 +36,7 @@
 		</a>
 		
 		<section class="by-address">
-			<div id="addresserror" class="alert alert-danger" style="display:none;">
+			<div id="addresserror" class="alert alert-error" style="display:none">
 				The address entered could not be found.
 			</div>
 		
@@ -118,7 +118,7 @@
 			{{Form::hidden('latitude', null, array('id'=>'latitude'))}}
 			{{Form::hidden('longitude', null, array('id'=>'longitude'))}}
 			{{Form::hidden('formatted_address', null, array('id'=>'formatted_address'))}}
-			<button type="submit">Use my Address</button>
+			<button type="submit" class="btn btn-red">Use my Address</button>
 		</section><!-- By Address -->
 	{{Form::close()}}
 	

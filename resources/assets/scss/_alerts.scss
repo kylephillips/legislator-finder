@@ -1,0 +1,16 @@
+//
+// Alerts
+// --------------------------------------------------
+.alert {
+	display: block;
+	background-color: $white;
+	color: $black;
+	margin-bottom: 1em;
+	padding: .5em;
+	border-left: 4px solid $green;
+}
+
+.alert-error {
+	border-left-color: $red;
+	color: $red;
+}

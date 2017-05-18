@@ -1,0 +1,741 @@
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 26, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 31, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+body {
+  line-height: 1; }
+
+/* line 35, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 39, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+blockquote, q {
+  quotes: none; }
+
+/* line 43, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 49, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 5, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+/* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+html {
+  height: 100%; }
+
+/* line 15, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+body {
+  font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  background-color: #151442;
+  font-size: 16px;
+  line-height: 26px;
+  color: #ffffff;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  background: url("../images/capitol-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 2em; }
+
+/* line 30, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit; }
+
+/* line 39, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+a {
+  color: #1bbc9b;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  text-decoration: none; }
+  /* line 43, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+  a:hover, a:focus {
+    color: #e84c3d;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease; }
+
+/* line 51, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto; }
+
+/* line 57, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 20px;
+  clear: both;
+  position: relative;
+  zoom: 1; }
+  /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .container:before, .container:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .container:after {
+    clear: both; }
+  /* line 65, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+  .container.small {
+    max-width: 940px; }
+  /* line 68, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+  .container.extra-small {
+    max-width: 500px; }
+
+/* line 75, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+::-moz-selection {
+  background: #ffffff;
+  color: #151442; }
+::selection {
+  background: #ffffff;
+  color: #151442; }
+
+/* line 79, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_scaffolding.scss */
+::-moz-selection {
+  background: #ffffff;
+  color: #151442; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_type.scss */
+p {
+  margin-right: 0 0 1em 0; }
+
+/* line 8, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_type.scss */
+ul, ol {
+  list-style-type: disc;
+  padding-left: 1em;
+  margin-bottom: 2em; }
+  /* line 12, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_type.scss */
+  ul li, ol li {
+    font-size: 1em;
+    margin-top: 1em; }
+    /* line 15, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_type.scss */
+    ul li:first-child, ol li:first-child {
+      margin-top: 0; }
+
+/* line 21, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_type.scss */
+h1 {
+  font-size: 2em;
+  font-weight: 100; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_forms.scss */
+label {
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+/* line 9, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_forms.scss */
+input[type="text"],
+select {
+  width: 100%;
+  height: 50px;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  border: 0;
+  padding: 0 .3em; }
+  /* line 16, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_forms.scss */
+  input[type="text"]:focus,
+  select:focus {
+    outline: none; }
+
+/* line 21, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_forms.scss */
+form .half {
+  float: left;
+  clear: both;
+  width: 48%; }
+  /* line 25, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_forms.scss */
+  form .half.right {
+    float: right;
+    clear: none; }
+
+/* line 10, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+.btn {
+  display: inline-block;
+  padding: .8em 1.5em;
+  margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: #1bbc9b;
+  color: #ffffff; }
+  /* line 23, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+  .btn:hover, .btn:focus {
+    color: #1bbc9b;
+    background-color: #ffffff;
+    text-decoration: none; }
+  /* line 30, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+  .btn:active, .btn.active {
+    outline: 0;
+    background-image: none; }
+  /* line 36, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+  .btn.disabled, .btn:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .65; }
+
+/* line 48, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+.btn-red {
+  background-color: #e84c3d;
+  color: #ffffff;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease; }
+  /* line 52, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+  .btn-red:hover {
+    color: #ffffff;
+    background-color: #e12c1b;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease; }
+  /* line 57, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+  .btn-red.disabled {
+    opacity: .4; }
+
+/* line 67, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_buttons.scss */
+input[type="submit"].btn-block,
+input[type="reset"].btn-block,
+input[type="button"].btn-block {
+  width: 100%; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_alerts.scss */
+.alert {
+  display: block;
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 1em;
+  padding: .5em;
+  border-left: 4px solid #1bbc9b; }
+
+/* line 13, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_alerts.scss */
+.alert-error {
+  border-left-color: #e84c3d;
+  color: #e84c3d; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_nav.scss */
+nav ul {
+  padding-top: 20px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  zoom: 1; }
+  /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  nav ul:before, nav ul:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  nav ul:after {
+    clear: both; }
+  /* line 8, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_nav.scss */
+  nav ul li {
+    float: left; }
+    /* line 10, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_nav.scss */
+    nav ul li a {
+      display: block;
+      font-size: 24px;
+      font-weight: 100;
+      padding: 20px; }
+      /* line 15, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_nav.scss */
+      nav ul li a.back {
+        color: #e84c3d; }
+
+/* line 22, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_nav.scss */
+.sunlight {
+  position: fixed;
+  bottom: 0px;
+  text-align: right;
+  width: 100%;
+  background-color: #151442;
+  padding: 5px 20px 5px 0;
+  font-weight: 100; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+.page-loading {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  text-align: center; }
+  /* line 12, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+  .page-loading div {
+    position: relative;
+    width: 100%;
+    height: 100%; }
+  /* line 17, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+  .page-loading p {
+    position: absolute;
+    top: 40%;
+    width: 100%; }
+
+/* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+#addressform {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto; }
+  /* line 8, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  #addressform h1 {
+    margin-bottom: 30px; }
+
+/* line 13, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+.locale-select {
+  margin-bottom: 50px;
+  background-color: #1bbc9b;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  position: relative;
+  padding: 5px; }
+  /* line 19, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  .locale-select ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    position: relative; }
+    /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+    .locale-select ul:before, .locale-select ul:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+    .locale-select ul:after {
+      clear: both; }
+    /* line 23, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+    .locale-select ul li {
+      float: left;
+      width: 50%;
+      margin: 0; }
+      /* line 27, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+      .locale-select ul li a {
+        font-size: 18px;
+        display: block;
+        height: 40px;
+        line-height: 40px;
+        color: #ffffff;
+        -webkit-transition: all 200ms ease;
+        transition: all 200ms ease; }
+        /* line 34, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+        .locale-select ul li a.active {
+          color: #1bbc9b;
+          cursor: default; }
+  /* line 41, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  .locale-select span {
+    position: absolute;
+    width: 50%;
+    height: 40px;
+    background-color: #ffffff;
+    top: 5px;
+    left: 5px;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease; }
+    /* line 49, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+    .locale-select span.state {
+      left: 49%;
+      -webkit-transition: all 200ms ease;
+      transition: all 200ms ease; }
+
+/* line 58, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+.locale-radios {
+  display: none; }
+
+/* line 64, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+#getcoordinates {
+  margin: -30px 0 50px 0;
+  display: block;
+  height: 50px;
+  padding: 0;
+  line-height: 50px; }
+  /* line 70, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  #getcoordinates i {
+    color: #941d12;
+    font-size: 22px;
+    margin-right: 5px; }
+
+/* line 79, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+.by-address {
+  background-color: rgba(2, 2, 28, 0.45);
+  -webkit-border-radius: 4px;
+          border-radius: 4px;
+  padding: 20px;
+  text-align: left; }
+  /* line 84, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  .by-address p {
+    margin-bottom: 15px; }
+  /* line 87, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  .by-address button {
+    clear: both;
+    display: block;
+    border: 0;
+    height: 50px;
+    width: 100%; }
+  /* line 96, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
+  .by-address .half {
+    margin-bottom: 25px; }
+
+/* line 3, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+.results h1 {
+  text-align: center;
+  margin: 0; }
+
+/* line 7, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+.results h3 {
+  color: #1bbc9b;
+  text-align: center;
+  margin: 5px 0 30px 0; }
+
+/* line 13, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+.results ul {
+  zoom: 1;
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .results ul:before, .results ul:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .results ul:after {
+    clear: both; }
+  /* line 16, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+  .results ul li {
+    float: left;
+    width: 25%;
+    margin-left: 12.5%; }
+    /* line 20, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul li:first-child {
+      margin-left: 0; }
+  /* line 24, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+  .results ul a {
+    display: block; }
+    /* line 26, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul a h3 {
+      text-align: center;
+      font-size: 22px;
+      color: #ffffff;
+      margin: 0 0 10px 0; }
+      /* line 31, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+      .results ul a h3 em {
+        display: block;
+        font-style: normal;
+        color: #e84c3d; }
+    /* line 38, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul a span {
+      display: block;
+      background: url("../images/loading.gif"), #151442;
+      background-repeat: no-repeat;
+      background-position: center center;
+      position: relative;
+      height: 200px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      -webkit-border-radius: 3px;
+              border-radius: 3px; }
+      /* line 48, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+      .results ul a span img {
+        width: 100%; }
+      /* line 51, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+      .results ul a span .snipe {
+        position: absolute;
+        bottom: 0;
+        width: 50px;
+        right: 0; }
+    /* line 59, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul a p {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 20px; }
+    /* line 65, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul a div {
+      display: block; }
+    /* line 70, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul a:hover div {
+      background-color: #1bbc9b; }
+  /* line 77, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+  .results ul.two {
+    width: 62.5%;
+    margin-left: 18.75%; }
+    /* line 80, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+    .results ul.two li {
+      width: 40%;
+      margin-left: 20%; }
+      /* line 83, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+      .results ul.two li:first-child {
+        margin-left: 0; }
+  /* line 89, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_search-results.scss */
+  .results ul.federal li a span {
+    height: 220px; }
+
+/* line 5, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+.legislator-details {
+  background-color: rgba(2, 2, 28, 0.45);
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  margin-bottom: 30px;
+  padding: 20px;
+  zoom: 1; }
+  /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .legislator-details:before, .legislator-details:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .legislator-details:after {
+    clear: both; }
+  /* line 12, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details span {
+    min-height: 100px;
+    display: block;
+    background: url("../images/loading.gif"), #151442;
+    background-repeat: no-repeat;
+    background-position: center center;
+    float: left;
+    width: 23%;
+    position: relative;
+    -webkit-border-radius: 4px;
+            border-radius: 4px; }
+    /* line 22, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .legislator-details span img {
+      -webkit-border-radius: 4px;
+              border-radius: 4px;
+      width: 100%; }
+    /* line 26, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .legislator-details span .snipe {
+      width: 50px;
+      position: absolute;
+      bottom: -1px;
+      right: 0;
+      -webkit-border-radius: 0 0 4px 0;
+              border-radius: 0 0 4px 0; }
+  /* line 35, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details article {
+    float: right;
+    width: 73%; }
+  /* line 40, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details h1 {
+    font-size: 36px;
+    line-height: 40px;
+    margin: 0; }
+  /* line 46, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details h3 {
+    font-size: 30px;
+    line-height: 32px;
+    color: #1bbc9b;
+    margin: 0 0 20px 0; }
+  /* line 53, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details p {
+    font-size: 16px;
+    margin-bottom: 20px; }
+    /* line 56, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .legislator-details p strong {
+      font-weight: normal;
+      color: #1bbc9b; }
+    /* line 60, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .legislator-details p a {
+      color: #e84c3d; }
+  /* line 65, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .legislator-details ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    zoom: 1; }
+    /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+    .legislator-details ul:before, .legislator-details ul:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+    .legislator-details ul:after {
+      clear: both; }
+    /* line 68, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .legislator-details ul li {
+      float: left; }
+      /* line 70, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+      .legislator-details ul li a {
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: #1bbc9b;
+        color: #ffffff;
+        font-size: 22px;
+        margin-left: 10px;
+        text-align: center;
+        line-height: 40px;
+        -webkit-transition: all 200ms ease;
+        transition: all 200ms ease; }
+        /* line 81, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+        .legislator-details ul li a:hover {
+          background-color: #e84c3d;
+          -webkit-transition: all 200ms ease;
+          transition: all 200ms ease; }
+      /* line 86, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+      .legislator-details ul li.website a {
+        width: auto;
+        font-size: 16px;
+        padding: 0 20px; }
+      /* line 91, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+      .legislator-details ul li:first-child a {
+        margin: 0; }
+
+/* line 99, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+.committees {
+  background-color: rgba(2, 2, 28, 0.45);
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  -webkit-border-radius: 6px;
+          border-radius: 6px; }
+  /* line 104, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .committees h3 {
+    margin: 0;
+    padding: 8px 0;
+    cursor: pointer;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease; }
+    /* line 109, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .committees h3 span {
+      font-size: 18px;
+      float: right; }
+    /* line 113, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .committees h3:hover {
+      color: #1bbc9b;
+      -webkit-transition: all 200ms ease;
+      transition: all 200ms ease; }
+  /* line 118, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  .committees ul {
+    display: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    /* line 121, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+    .committees ul li {
+      font-size: 16px; }
+      /* line 123, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+      .committees ul li a {
+        display: block;
+        padding: 5px 0;
+        color: #ffffff; }
+        /* line 127, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+        .committees ul li a em {
+          font-style: normal;
+          color: #1bbc9b; }
+
+/* line 136, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+.map {
+  padding: 20px;
+  background-color: rgba(2, 2, 28, 0.45);
+  -webkit-border-radius: 6px;
+          border-radius: 6px;
+  margin-bottom: 50px; }
+
+/* line 142, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+#mapcont {
+  width: 100%;
+  height: 300px;
+  background: url("../images/loading.gif");
+  background-repeat: no-repeat;
+  background-position: center center; }
+  /* line 148, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_legislator-details.scss */
+  #mapcont img {
+    max-width: none; }
+
+/* line 5, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.clearfix {
+  zoom: 1; }
+  /* line 6, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  /* line 11, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_mixins.scss */
+  .clearfix:after {
+    clear: both; }
+
+/* line 9, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.clear {
+  clear: both; }
+
+/* line 14, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.hidden {
+  display: none; }
+
+/* line 17, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.visible {
+  display: block; }
+
+/* line 21, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.pull-right {
+  float: right; }
+
+/* line 25, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.pull-left {
+  float: left; }
+
+@media (max-width: 767px) {
+  /* line 30, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+  .hidden-mobile {
+    display: none; } }
+
+/* line 36, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+.visible-mobile {
+  display: none; }
+  @media (max-width: 767px) {
+    /* line 36, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+    .visible-mobile {
+      display: block; } }
+
+@media (min-width: 768px) {
+  /* line 43, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_utilities.scss */
+  .visible-desktop {
+    display: block; } }
+
+/*# sourceMappingURL=../../../sass */

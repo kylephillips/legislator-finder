@@ -1,0 +1,140 @@
+//
+// Responsive: Landscape phone to desktop/tablet
+// --------------------------------------------------
+
+
+@media (max-width: 767px) {
+	body {
+		background:transparent;
+		background-color:@blue;
+	}
+	
+	.container {
+		padding:20px 20px 0 20px;
+	}
+	
+	h1 {
+		font-size:30px;
+		margin-top:0;
+	}
+	
+	form .half {
+		float:none;
+		width:100%;
+	}
+	
+	.by-address .half {
+		margin-bottom:15px;
+	}
+	
+	.sunlight {
+		position:relative;
+		bottom:auto;
+		text-align:center;
+		padding-right:0;
+		padding-top:20px;
+	}
+	
+	// Form Results
+	.results {
+		ul {
+			li {
+				float:none;
+				clear:both;
+				width:100%;
+				margin-left:0;
+				margin-bottom:20px;
+			}
+			a {
+				.clearfix();
+				display:block;
+				h3 {
+					text-align:left;
+					font-size:20px;
+					em {
+						display:inline;
+					}
+				}
+
+				span {
+					float:left;
+					margin-right:20px;
+					width:100px;
+					height:100px;
+					.snipe {
+						width:35px;
+					}
+				}
+
+				p {
+					text-align:left;
+					font-size:18px;
+				}
+
+				div {
+					display:inline-block;
+					font-size:15px;
+					padding:3px 8px;
+				}
+
+				&:hover div {
+					background-color:@green;
+				}
+
+			} // a
+			
+			// State results (2 legislators)
+			&.two {
+				width:100%;
+				margin-left:0;
+				li {
+					width:100%;
+					margin-left:0;
+					&:first-child {
+						margin-left:0;
+					}
+				}
+			}
+			
+			&.federal li a span {
+				height:120px;
+			}
+
+		} // ul
+
+	} // results
+	
+	
+	// Legislator detail page
+	.legislator-details {
+		span {
+			clear:both;
+			float:none;
+			width:150px;
+		} // span
+
+		article {
+			float:none;
+			width:100%;
+			margin-bottom:20px;
+		}
+
+		h1 {
+			font-size:26px;
+			line-height:32px;
+		}
+
+		h3 {
+			font-size:20px;
+			line-height:24px;
+		}
+
+		p {
+			margin-bottom:20px;
+		}
+
+	} // legislator details
+
+
+	
+}

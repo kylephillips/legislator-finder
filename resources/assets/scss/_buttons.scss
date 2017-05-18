@@ -1,0 +1,70 @@
+//
+// Buttons
+// --------------------------------------------------
+
+
+// Base styles
+// --------------------------------------------------
+
+// Core styles
+.btn {
+	display: inline-block;
+	padding: .8em 1.5em;
+	margin-bottom: 0;
+	font-size: 18px;
+	font-weight: $light;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	white-space: nowrap;
+	background-color: $green;
+	color: $white;
+
+	&:hover,
+	&:focus {
+		color: $green;
+		background-color: $white;
+		text-decoration: none;
+	}
+
+	&:active,
+	&.active {
+		outline: 0;
+		background-image: none;
+	}
+
+	&.disabled,
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: none; // Future-proof disabling of clicks
+		opacity: .65;
+	}
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.btn-red {
+	background-color: $red;
+	color: $white;
+	transition: all 200ms ease;
+	&:hover {
+		color: $white;
+		background-color: darken($red,8%);
+		transition: all 200ms ease;
+	}
+	&.disabled {
+		opacity: .4;
+	}
+}
+
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.btn-block {
+    width: 100%;
+  }
+}
