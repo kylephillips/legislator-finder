@@ -31,55 +31,55 @@ class LegislatorController extends Controller
 		$sunlight_key = env('SUNLIGHT_API_KEY');
 		$validator = Validator::make($request->all(), $rules);
 		
-		if ( !$validator->fails() ){
+		if ( $validator->fails() ) return redirect()->route('index_page');
 			
-			// Setup required parameters for API call
-			$longitude = $request->input('longitude');
-			$latitude = $request->input('latitude');			
-			$formatted_address = ( $request->input('formatted_address') ) 
-				? $request->input('formatted_address') 
-				: 'Your Current Location';
+		// Setup required parameters for API call
+		$longitude = $request->input('longitude');
+		$latitude = $request->input('latitude');			
+		$formatted_address = ( $request->input('formatted_address') ) 
+			? $request->input('formatted_address') 
+			: 'Your Current Location';
+		
+		// Federal Legislators
+		if ( $request->input('locale') == "federal" ){
 			
-			// Federal Legislators
-			if ( $request->input('locale') == "federal" ){
-				
-				$client = new Client();
-				$response = $client->get('http://congress.api.sunlightfoundation.com/legislators/locate', [
-					'query' => [
-						'latitude' => $latitude,
-						'longitude' => $longitude,
-						'apikey' => $sunlight_key
-						]
-				]);
-				$legislators = $response->json();
-				$legislators = $legislators['results'];
-				
-				return view('templates.results')
-					->with('legislators', $legislators)
-					->with('formatted_address', $formatted_address)
-					->with('locale', 'federal')
-					->with('noaddress', false);
-				
-			} else { // State Legislators
-				
-				$client = new Client();
-				$response = $client->get('http://openstates.org/api/v1/legislators/geo/', [
-					'query' => [
-						'lat' => $latitude,
-						'long' => $longitude,
-						'apikey' => $sunlight_key
+			$client = new Client();
+			$response = $client->get('http://congress.api.sunlightfoundation.com/legislators/locate', [
+				'query' => [
+					'latitude' => $latitude,
+					'longitude' => $longitude,
+					'apikey' => $sunlight_key
 					]
-				]);
-				$legislators = $response->json();
-				$legislators = $legislators;
-				
-				return view('templates.results')
-					->with('legislators', $legislators)
-					->with('formatted_address', $formatted_address)
-					->with('locale', 'state')
-					->with('noaddress', false);
-			}
+			]);
+			$legislators = $response->json();
+			$legislators = $legislators['results'];
+			
+			return view('templates.results')
+				->with('legislators', $legislators)
+				->with('formatted_address', $formatted_address)
+				->with('locale', 'federal')
+				->with('noaddress', false);
+			
+		} else { // State Legislators
+			
+			$client = new Client();
+			$response = $client->get('http://openstates.org/api/v1/legislators/geo/', [
+				'query' => [
+					'lat' => $latitude,
+					'long' => $longitude,
+					'apikey' => $sunlight_key
+				]
+			]);
+			$legislators = $response->json();
+			$legislators = $legislators;
+			
+			return view('templates.results')
+				->with('legislators', $legislators)
+				->with('formatted_address', $formatted_address)
+				->with('locale', 'state')
+				->with('noaddress', false);
 		}
+		
 	} //postFederal
 	
 	

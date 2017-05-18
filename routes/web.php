@@ -10,9 +10,3 @@ Route::get('state/{id?}', array('as'=>'state_results','uses'=>'LegislatorControl
 Route::get('404', array('as'=>'missing_page', function(){
 	return view('templates.missing');
 }));
-
-// 404 page
-// App::missing(function($exception)
-// {
-//     return Redirect::route('missing_page');
-// });
