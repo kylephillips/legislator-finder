@@ -30,10 +30,10 @@
 					<h3><em>{{ $legislator['state_name'] }}</em> Senator</h3>
 					<span>
 						<img src="{{asset('assets/images/')}}/federal-legislators/{{$legislator['bioguide_id']}}.jpg" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{{ \Str::party_snipe($legislator) }}
+						{!! \Str::party_snipe($legislator) !!}
 					</span>
 					<p>{{ \Str::legislator_name($legislator) }}</p>
-					<div>View Details</div>
+					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
 			@endif
@@ -47,10 +47,10 @@
 					<h3><em>District {{$legislator['district']}}</em> Representative</h3>
 					<span>
 						<img src="{{asset('assets/images/')}}/federal-legislators/{{$legislator['bioguide_id']}}.jpg" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{{ \Str::party_snipe($legislator) }}
+						{!! \Str::party_snipe($legislator) !!}
 					</span>
 					<p>{{ \Str::legislator_name($legislator) }}</p>
-					<div>View Details</div>
+					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
 			@endif
@@ -72,10 +72,10 @@
 						<h3><em>District {{ $legislator['district'] }}</em> Senator</h3>
 						<span>
 							<img src="{{$legislator['photo_url']}}" alt="<?php echo $legislator['full_name']; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-							{{ \Str::party_snipe_state($legislator) }}
+							{!! \Str::party_snipe_state($legislator) !!}
 						</span>
 						<p>{{ $legislator['full_name'] }}</p>
-						<div>View Details</div>
+						<div class="btn btn-block">View Details</div>
 					</a>
 				</li>
 				@endif
@@ -89,10 +89,10 @@
 						<h3><em>District {{$legislator['district']}}</em> Representative</h3>
 						<span>
 							<img src="{{$legislator['photo_url']}}" alt="<?php echo $legislator['full_name']; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-							{{ \Str::party_snipe_state($legislator) }}
+							{!! \Str::party_snipe_state($legislator) !!}
 						</span>
 						<p>{{ $legislator['full_name'] }}</p>
-						<div>View Details</div>
+						<div class="btn btn-block">View Details</div>
 					</a>
 				</li>
 				@endif
