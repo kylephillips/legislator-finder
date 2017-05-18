@@ -1,0 +1,96 @@
+// Form Results
+.results {
+	h1 {
+		text-align:center;
+		margin:0;
+	}
+	h3 {
+		color:@green;
+		text-align:center;
+		margin:5px 0 30px 0;
+	}
+	
+	ul {
+		.clearfix();
+		.unstyled();
+		li {
+			float:left;
+			width:25%; //164/800 
+			margin-left:12.5%;
+			&:first-child {
+				margin-left:0;
+			}
+		}
+		a {
+			display:block;
+			h3 {
+				text-align:center;
+				font-size:22px;
+				color:@white;
+				margin:0 0 10px 0;
+				em {
+					display:block;
+					font-style:normal;
+					color:@red;
+				}
+			}
+
+			span {
+				display:block;
+				background:url('../images/loading.gif'), @blue;
+				background-repeat:no-repeat;
+				background-position:center center;
+				position:relative;
+				height:200px;
+				margin-bottom:20px;
+				overflow:hidden;
+				.border-radius(3px);
+				img {
+					width:100%;
+				}
+				.snipe { // party snipe
+					position:absolute;
+					bottom:0;
+					width:50px;
+					right:0;
+				}
+			} // span
+			
+			p {
+				text-align:center;
+				color:@white;
+				margin-bottom:20px;
+			}
+			
+			div {
+				.btn();
+				.btn-red();
+				display:block;
+			}
+			
+			&:hover div {
+				background-color:@green;
+			}
+			
+		} // a
+		
+		// State results (2 legislators)
+		&.two {
+			width:62.5%;
+			margin-left:18.75%;
+			li {
+				width:40%;
+				margin-left:20%;
+				&:first-child {
+					margin-left:0;
+				}
+			}
+		}
+		
+		&.federal li a span {
+			height:220px;
+		}
+		
+	} // ul
+	
+} // results

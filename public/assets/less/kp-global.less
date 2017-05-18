@@ -1,0 +1,50 @@
+// nav
+nav ul {
+	padding-top:20px;
+	.unstyled();
+	.clearfix();
+	li {
+		float:left;
+		a {
+			display:block;
+			font-size:24px;
+			.proxima-light();
+			padding:20px;
+			&.back {
+				color:@red;
+			}
+		}
+	}
+}
+
+// loading
+.page-loading {
+	display:none;
+	position:absolute;
+	background-color:rgba(0,0,0,.8);
+	width:100%;
+	height:100%;
+	z-index:1;
+	text-align:center;
+	div {
+		position:relative;
+		width:100%;
+		height:100%;
+	}
+	p {
+		position:absolute;
+		top:40%;
+		width:100%;
+	}
+}
+
+// Bottom sunlight link
+.sunlight {
+	position:fixed;
+	bottom:0px;
+	text-align:right;
+	width:100%;
+	background-color:@blue;
+	padding:5px 20px 5px 0;
+	.proxima-light();
+}
