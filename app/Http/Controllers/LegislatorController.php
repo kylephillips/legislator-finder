@@ -4,10 +4,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
+use \App\Services\OpenStates;
 use Validator;
 
 class LegislatorController extends Controller 
 {
+	/**
+	* Open States Interaction Class
+	* @var object OpenStates
+	*/
+	private $openstates;
+
+	public function __construct(OpenStates $openstates)
+	{
+		$this->openstates = $openstates;
+	}
 	
 	public function getIndex()
 	{
@@ -28,32 +39,20 @@ class LegislatorController extends Controller
 			'latitude' => 'required|numeric',
 			'longitude' => 'required|numeric'
 		);
-		$sunlight_key = env('SUNLIGHT_API_KEY');
-		$validator = Validator::make($request->all(), $rules);
-		
+
+		$validator = Validator::make($request->all(), $rules);		
 		if ( $validator->fails() ) return redirect()->route('index_page');
 			
 		// Setup required parameters for API call
 		$longitude = $request->input('longitude');
-		$latitude = $request->input('latitude');			
+		$latitude = $request->input('latitude');
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
 			: 'Your Current Location';
 		
 		// Federal Legislators
 		if ( $request->input('locale') == "federal" ){
-			
-			$client = new Client();
-			$response = $client->get('http://congress.api.sunlightfoundation.com/legislators/locate', [
-				'query' => [
-					'latitude' => $latitude,
-					'longitude' => $longitude,
-					'apikey' => $sunlight_key
-					]
-			]);
-			$legislators = $response->json();
-			$legislators = $legislators['results'];
-			
+			$legislators = $this->openstates->getFederalLegislators($latitude, $longitude);			
 			return view('templates.results')
 				->with('legislators', $legislators)
 				->with('formatted_address', $formatted_address)
@@ -61,27 +60,14 @@ class LegislatorController extends Controller
 				->with('noaddress', false);
 			
 		} else { // State Legislators
-			
-			$client = new Client();
-			$response = $client->get('http://openstates.org/api/v1/legislators/geo/', [
-				'query' => [
-					'lat' => $latitude,
-					'long' => $longitude,
-					'apikey' => $sunlight_key
-				]
-			]);
-			$legislators = $response->json();
-			$legislators = $legislators;
-			
+			$legislators = $this->openstates->getStateLegislators($latitude, $longitude);	
 			return view('templates.results')
 				->with('legislators', $legislators)
 				->with('formatted_address', $formatted_address)
 				->with('locale', 'state')
 				->with('noaddress', false);
-		}
-		
-	} //postFederal
-	
+		}	
+	}
 	
 	/*
 	* Single Federal Legislator
@@ -89,18 +75,7 @@ class LegislatorController extends Controller
 	public function getFederal($id = null)
 	{
 		if ( !$id ) return redirect()->route('index_page');
-		$sunlight_key = env('SUNLIGHT_API_KEY');
-
-		$client = new Client();
-		$response = $client->get('http://congress.api.sunlightfoundation.com/legislators', [
-			'query' => [
-				'bioguide_id' => $id,
-				'apikey' => $sunlight_key
-				]
-		]);
-		$legislators = $response->json();
-		$legislator = $legislators['results'][0];
-
+		$legislator = $this->openstates->getSingleFederalLegislator($id);
 		if ( !$legislator ) return redirect()->route('index_page');
 		
 		// Convert state name for use in maps
@@ -158,15 +133,7 @@ class LegislatorController extends Controller
 	{
 		$sunlight_key = env('SUNLIGHT_API_KEY');
 		if ( !$id ) return redirect()->route('index_page');
-
-		$client = new Client();
-		$response = $client->get("http://openstates.org/api/v1//legislators/$id", [
-			'query' => [
-				'apikey' => $sunlight_key
-				]
-		]);
-		$legislator = $response->json();
-		
+		$legislator = $this->openstates->getSingleStateLegislator($id);	
 		if ( !$legislator ) return redirect()->route('index_page');
 			
 		// Get the current term object
