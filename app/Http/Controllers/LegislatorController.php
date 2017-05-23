@@ -204,5 +204,20 @@ class LegislatorController extends Controller
 			->with('center_lon',$center_lon)
 			->with('coordinates',$coordinates);
 	}
+
+	public function googleTest($address)
+	{
+		$client = new Client();
+		$civic_feed = "https://www.googleapis.com/civicinfo/v2/representatives";
+		$civic_response = $client->get($civic_feed, [
+			'query' => [
+				'key' => env('GOOGLE_MAPS_KEY'),
+				'address' => $address
+			]
+		]);		
+		$civic_data = $civic_response->json();
+		$divisions = $civic_data['divisions'];
+		dd($civic_data);
+	}
 	
 }
