@@ -186,5 +186,19 @@ class LegislatorController extends Controller
 		$divisions = $civic_data['divisions'];
 		dd($civic_data);
 	}
+
+	
+	public function propublicaTest()
+	{
+		$client = new Client();
+		$pp_feed = "https://api.propublica.org/congress/v1/members/house/GA/4/current.json";
+		$pp_response = $client->get($pp_feed, [
+			'headers' => [
+				'X-API-Key' => env('PROPUBLICA_API_KEY')
+			]
+		]);		
+		$pp_data = $pp_response->json();
+		dd($pp_data);
+	}
 	
 }

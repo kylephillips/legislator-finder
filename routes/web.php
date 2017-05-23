@@ -7,6 +7,7 @@ Route::get('federal/{id?}', array('as'=>'federal_results','uses'=>'LegislatorCon
 Route::get('state/{id?}', array('as'=>'state_results','uses'=>'LegislatorController@getState'));
 
 Route::get('google-test/{address?}', array('as'=>'google_test','uses'=>'LegislatorController@googleTest'));
+Route::get('propublica-test', array('as'=>'google_test','uses'=>'LegislatorController@propublicaTest'));
 
 
 Route::get('404', array('as'=>'missing_page', function(){
