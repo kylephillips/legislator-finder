@@ -15,6 +15,7 @@ var css = 'public/assets/css/';
 
 // JS Paths
 var js_source = [
+	'resources/assets/js/Toggle.js',
 	'resources/assets/js/LocaleSwitch.js',
 	'resources/assets/js/GeoCoder.js',
 	'resources/assets/js/Bootstrap.js'

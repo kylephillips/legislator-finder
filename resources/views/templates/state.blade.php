@@ -56,8 +56,8 @@
 	
 	
 	<section class="committees">
-		<h3>Committees <span>show <i class="icon-angle-down"></i></span></h3>
-		<ul>
+		<h3 data-toggle="committees">Committees <span><i class="icon-arrow_down"></i></span></h3>
+		<ul data-toggle-id="committees">
 			@foreach($committees as $key=>$comm)
 				@if ( $key > 0 ){{-- First item isn't committee --}}
 				<li>
@@ -84,7 +84,6 @@
 	
 </div>{{-- Container --}}
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
 	
 	$(document).ready(function(){
