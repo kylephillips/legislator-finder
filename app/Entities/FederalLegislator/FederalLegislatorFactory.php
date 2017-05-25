@@ -32,17 +32,27 @@ class FederalLegislatorFactory
 		$federal->senate->division_id = $senate_office['divisionId'];
 		$federal->senate->senators = $senators;
 
+		// Add slugs to the senators
+		foreach ( $federal->senate->senators as $key => $senator ){
+			$federal->senate->senators[$key]['slug'] = str_slug($senator['name']);
+		}
+
 		// Setup the House Object
 		$federal->house->label = $house_office['name'];
 		$federal->house->division_id = $house_office['divisionId'];
 		$federal->house->representatives = $representatives;
+
+		// Add slugs to the represenatatives
+		foreach ( $federal->house->representatives as $key => $representative ){
+			$federal->house->representatives[$key]['slug'] = str_slug($representative['name']);
+		}
 
 		// Normalize the House District for fetching map boundaries
 		$division_array = explode('/', $federal->house->division_id);
 		$district_number = str_replace('cd:', '', end($division_array));
 		$federal->location->district_number = $district_number;
 		$federal->location->district_number_formatted = ( strlen($district_number) == 1 ) ? '0' . $district_number : $district_number;
-
+		
 		return $federal;
 	}
 }

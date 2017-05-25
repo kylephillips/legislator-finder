@@ -30,10 +30,20 @@ class StateLegislatorFactory
 		$state->senate->division_id = $senate_office['divisionId'];
 		$state->senate->senators = $senators;
 
+		// Add slugs to senators
+		foreach ( $state->senate->senators as $key => $senator ){
+			$state->senate->senators[$key]['slug'] = str_slug($senator['name']);
+		}		
+
 		// Setup the House Object
 		$state->house->label = $house_office['name'];
 		$state->house->division_id = $house_office['divisionId'];
 		$state->house->representatives = $representatives;
+
+		// Add slugs to representatives
+		foreach ( $state->house->representatives as $key => $representative ){
+			$state->house->representatives[$key]['slug'] = str_slug($representative['name']);
+		}
 
 		return $state;
 	}
