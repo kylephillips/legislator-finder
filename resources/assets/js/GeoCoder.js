@@ -46,6 +46,7 @@ var GeoCoder = function()
 	*/
 	plugin.toggleGeoLocation = function()
 	{
+		if ( location.protocol !== 'https:' ) return;
 		if (navigator.geolocation) $('[' + plugin.selectors.geoButton + ']').show();
 	}
 
