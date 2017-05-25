@@ -15,7 +15,8 @@ var css = 'public/assets/css/';
 
 // JS Paths
 var js_source = [
-	
+	'resources/assets/js/GeoCoder.js',
+	'resources/assets/js/Bootstrap.js'
 ];
 var js_compiled = 'public/assets/js/';
 

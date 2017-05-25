@@ -7,7 +7,7 @@
 	{{Html::style('assets/css/styles-new.css')}}
 	<script type="text/javascript" src="//use.typekit.net/nxo4tar.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{env('GOOGLE_MAPS_KEY')}}"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{env('GOOGLE_MAPS_KEY')}}&libraries=places"></script>
 	@include('includes.scripts')
 </head>
 <body>
