@@ -13,7 +13,58 @@
 
 
 <div class="container small home">
+
+	<div style="width:100%;height:500px;" id="test-map"></div>
+	<script>
+
+	$(document).ready(function(){
+		var cd = '04'; // The Congressional District to Load
+		loadGeoJson(cd);	
+	});
 	
+	function loadGeoJson(cd)
+	{
+		var geoJson = '{{asset('assets/js/congressional_districts_115.geojson')}}';
+		$.getJSON(geoJson, function(data){
+			var layers = data.features;
+			$.each(layers, function(key, val){
+				// See : https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code
+				if ( val.properties.STATEFP === '13' && val.properties.CD115FP === '07' ) initMap(val);
+			});
+		});
+	}
+
+	function initMap(json)
+	{
+		var map;
+		map = new google.maps.Map(document.getElementById('test-map'),{
+			zoom: 4,
+			center: {lat: 35.1825687, lng: -100.0268953}
+		});
+		var geoJson = {
+			type: 'FeatureCollection',
+			features : [
+				json
+			]
+		}
+
+		map.data.addGeoJson(geoJson);
+		map.data.setStyle({
+			fillColor: '#151442',
+			strokeWeight: 0
+		});
+
+		// Zoom and fit the map to the congressional boundary
+		var bounds = new google.maps.LatLngBounds(); 
+		map.data.forEach(function(feature){
+			feature.getGeometry().forEachLatLng(function(latlng){
+				bounds.extend(latlng);
+			});
+		});
+		map.fitBounds(bounds);
+	}
+	</script>
+
 	{{Form::open(array('url'=>'results/','id'=>'addressform'))}}
 		
 		<h1>Find Your Legislators</h1>
