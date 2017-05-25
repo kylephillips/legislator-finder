@@ -5,19 +5,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
 use \App\Services\OpenStates;
+use \App\Services\GoogleCivicInfo;
 use Validator;
 
 class LegislatorController extends Controller 
 {
 	/**
-	* Open States Interaction Class
+	* Open States Interaction Service Class
 	* @var object OpenStates
 	*/
 	private $openstates;
 
-	public function __construct(OpenStates $openstates)
+	/**
+	* Google Civic Information Service Class
+	* @var object GoogleCivicInfo
+	*/
+	private $google;
+
+	public function __construct(OpenStates $openstates, GoogleCivicInfo $google)
 	{
 		$this->openstates = $openstates;
+		$this->google = $google;
 	}
 	
 	public function getIndex()
@@ -31,7 +39,7 @@ class LegislatorController extends Controller
 	}
 	
 	/*
-	* Lookup Results
+	* Lookup Legislators
 	*/
 	public function postResults(Request $request)
 	{
@@ -39,34 +47,26 @@ class LegislatorController extends Controller
 			'latitude' => 'required|numeric',
 			'longitude' => 'required|numeric'
 		);
-
-		$validator = Validator::make($request->all(), $rules);		
+		$validator = Validator::make($request->all(), $rules);
 		if ( $validator->fails() ) return redirect()->route('index_page');
 			
-		// Setup required parameters for API call
+		// Make the API Call
 		$longitude = $request->input('longitude');
 		$latitude = $request->input('latitude');
+		$this->google->fetchLegislativeInfo($latitude, $longitude);
+
+		$legislators = ( $request->input('locale') == 'federal' ) ? session('federal_legislators') : session('state_legislators');
+		$locale = ( $request->input('locale') == 'federal' ) ? 'federal' : 'state';
+
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
 			: 'Your Current Location';
-		
-		// Federal Legislators
-		if ( $request->input('locale') == "federal" ){
-			$legislators = $this->openstates->getFederalLegislators($latitude, $longitude);			
-			return view('templates.results')
-				->with('legislators', $legislators)
-				->with('formatted_address', $formatted_address)
-				->with('locale', 'federal')
-				->with('noaddress', false);
-			
-		} else { // State Legislators
-			$legislators = $this->openstates->getStateLegislators($latitude, $longitude);	
-			return view('templates.results')
-				->with('legislators', $legislators)
-				->with('formatted_address', $formatted_address)
-				->with('locale', 'state')
-				->with('noaddress', false);
-		}	
+				
+		return view('templates.results')
+			->with('legislators', $legislators)
+			->with('formatted_address', $formatted_address)
+			->with('locale', $locale)
+			->with('noaddress', false);
 	}
 	
 	/*
@@ -170,21 +170,6 @@ class LegislatorController extends Controller
 			->with('center_lat',$center_lat)
 			->with('center_lon',$center_lon)
 			->with('coordinates',$coordinates);
-	}
-
-	public function googleTest($address)
-	{
-		$client = new Client();
-		$civic_feed = "https://www.googleapis.com/civicinfo/v2/representatives";
-		$civic_response = $client->get($civic_feed, [
-			'query' => [
-				'key' => env('GOOGLE_MAPS_KEY'),
-				'address' => $address
-			]
-		]);		
-		$civic_data = $civic_response->json();
-		$divisions = $civic_data['divisions'];
-		dd($civic_data);
 	}
 
 	
