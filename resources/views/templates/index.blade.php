@@ -69,7 +69,7 @@
 		
 		<h1>Find Your Legislators</h1>
 
-		<div class="locale-select">
+		<div class="locale-select" data-locale-select>
 			<span class="switch"></span>
 			<ul>
 				<li><a href="#federal" class="active">Federal</a></li>

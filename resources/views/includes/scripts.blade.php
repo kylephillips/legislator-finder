@@ -1,9 +1,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	{{Html::script('assets/js/scripts.min.js')}}
 	
-	{{-- {{Html::script('assets/js/locator.js')}} --}}
-	{{Html::script('assets/js/scripts.js')}}
-	
 	<script type="text/javascript">
 
 	  var _gaq = _gaq || [];
