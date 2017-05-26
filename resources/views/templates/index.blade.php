@@ -5,7 +5,7 @@
 <div class="page-loading" data-loading>
 	<div>
 		<p>
-			<img src="{{asset('assets/images/loading.gif')}}" alt="loading"><br />
+			<i class="icon-spinner"></i><br />
 			Finding Your Legislators
 		</p>
 	</div>

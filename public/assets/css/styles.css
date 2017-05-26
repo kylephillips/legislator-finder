@@ -277,18 +277,22 @@ input[type="button"].btn-block {
   content: "\e569"; }
 
 /* line 41, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
+.icon-spinner:before {
+  content: "\e97b"; }
+
+/* line 44, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
 .icon-facebook:before {
   content: "\ea90"; }
 
-/* line 44, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
+/* line 47, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
 .icon-twitter:before {
   content: "\ea96"; }
 
-/* line 47, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
+/* line 50, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
 .icon-youtube:before {
   content: "\ea9d"; }
 
-/* line 50, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
+/* line 53, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_icons.scss */
 .icon-linkedin:before {
   content: "\eaca"; }
 
@@ -358,15 +362,60 @@ nav ul {
   z-index: 1;
   text-align: center; }
   /* line 12, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+  .page-loading i {
+    font-size: 3em;
+    margin-left: -.5em;
+    top: -1em; }
+  /* line 17, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
   .page-loading div {
     position: relative;
     width: 100%;
     height: 100%; }
-  /* line 17, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+  /* line 22, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
   .page-loading p {
     position: absolute;
     top: 40%;
     width: 100%; }
+
+/* line 29, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_loading.scss */
+.icon-spinner {
+  -webkit-animation: rotate linear 2s infinite;
+          animation: rotate linear 2s infinite;
+  position: absolute; }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; } }
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-transform-origin: center center;
+            transform-origin: center center; } }
 
 /* line 4, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_address-form.scss */
 #addressform {

@@ -9,6 +9,11 @@
 	height: 100%;
 	z-index: 1;
 	text-align: center;
+	i {
+		font-size: 3em;
+		margin-left: -.5em;
+		top: -1em;
+	}
 	div {
 		position: relative;
 		width: 100%;
@@ -18,5 +23,25 @@
 		position: absolute;
 		top: 40%;
 		width: 100%;
+	}
+}
+
+.icon-spinner {
+	animation: rotate linear 2s infinite;
+	position: absolute;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+		transform-origin: center center;
+	}
+	50% {
+		transform: rotate(180deg);
+		transform-origin: center center;
+	}
+	100% {
+		transform: rotate(360deg);
+		transform-origin: center center;
 	}
 }
