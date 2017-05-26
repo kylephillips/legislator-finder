@@ -1,9 +1,10 @@
 @extends('frontend_master')
 @section('content')
+
 <nav>
 	<ul>
 		<li><a href="{{URL::to('/')}}">New Search</a></li>
-		<li><a href="{{URL::to('/results')}}" class="back">Back to Results</a></li>
+		<li><a href="{{URL::to('/results/federal')}}" class="back">Back to Results</a></li>
 	</ul>
 </nav>
 

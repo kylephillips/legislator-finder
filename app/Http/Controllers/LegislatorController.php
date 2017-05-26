@@ -50,9 +50,20 @@ class LegislatorController extends Controller
 		return view('templates.index');
 	}
 		
-	public function getResults()
+	/**
+	* For "Back" functionality
+	*/
+	public function getResults($locale)
 	{
-		return view('templates.results')->with('noaddress', true);
+		if ( !$locale ) return redirect()->route('index_page');
+		$formatted_address = session('user_address');
+		if ( !$formatted_address ) return redirect()->route('index_page');
+		$locale = ( $locale == 'federal' ) ? 'federal' : 'state';
+		$legislators = ( $locale == 'federal' ) ? session('federal_legislators') : session('state_legislators');
+		return view('templates.results')
+			->with('legislators', $legislators)
+			->with('formatted_address', $formatted_address)
+			->with('locale', $locale);
 	}
 	
 	/*
@@ -80,6 +91,8 @@ class LegislatorController extends Controller
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
 			: 'Your Current Location';
+		
+		$request->session()->put('user_address', $formatted_address);
 				
 		return view('templates.results')
 			->with('legislators', $legislators)
