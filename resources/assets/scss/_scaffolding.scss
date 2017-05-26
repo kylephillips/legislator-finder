@@ -1,0 +1,81 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: $base-font-family;
+	background-color: $blue;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	color: $white;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	background: url('../images/capitol-bg.jpg') no-repeat center center fixed; 
+	background-size: cover;
+}
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+
+a {
+	color: $green;
+	transition: all 200ms ease;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		color: $red;
+		transition: all 200ms ease;
+	}
+}
+
+
+img {
+	vertical-align: middle;
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 0 20px;
+	clear: both;
+	position: relative;
+	@include clearfix();
+	&.small {
+		max-width: 940px;
+	}
+	&.extra-small {
+		max-width: 500px;
+	}
+}
+
+
+// Selection Colors
+::selection {
+	background: $white;
+	color: $blue;
+}
+::-moz-selection {
+	background: $white;
+	color: $blue;
+}

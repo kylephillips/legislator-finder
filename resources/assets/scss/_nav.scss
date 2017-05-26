@@ -1,0 +1,32 @@
+//
+// Primary Navigation
+// --------------------------------------------------
+nav ul {
+	padding-top: 20px;
+	@include unstyled;
+	@include clearfix;
+	li {
+		float: left;
+		margin: 0;
+		a {
+			display: block;
+			font-size: 24px;
+			font-weight: $light;
+			padding: 20px;
+			&.back {
+				color: $red;
+			}
+		}
+	}
+}
+
+.data-sources {
+	position: fixed;
+	bottom: 0px;
+	text-align: right;
+	width: 100%;
+	background-color: $blue;
+	padding: 5px 20px 5px 0;
+	font-weight: $light;
+	font-size: .8em;
+}

@@ -1,0 +1,157 @@
+//
+// Form Results
+// --------------------------------------------------
+.results {
+	max-width: 600px;
+	h1 {
+		text-align: center;
+		margin: 0 0 .3em 0;
+	}
+	h3 {
+		color: $green;
+		text-align: center;
+		font-size: 1.3em;
+		margin: 5px 0 1em 0;
+		@include smooth;
+	}
+	
+	ul {
+		@include clearfix();
+		@include unstyled();
+		li {
+			float: left;
+			width: 30%;
+			margin: 0;
+			height: 410px;
+			position: relative;
+			margin-left: 5%;
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+		a {
+			display: block;
+			h3 {
+				text-align: center;
+				font-size: 1.3em;
+				line-height: 1.2;
+				color: $white;
+				margin: 0 0 10px 0;
+				@include smooth;
+				em {
+					display: block;
+					font-style: normal;
+					color: $red;
+				}
+			}
+
+			span {
+				display: block;
+				background-color: $blue;
+				background-repeat: no-repeat;
+				background-position: center center;
+				position: relative;
+				margin-bottom: 1em;
+				overflow: hidden;
+				img {
+					width: 105%;
+					max-width: none;
+					position: relative;
+					left: -2.5%;
+				}
+				.snipe { // party snipe
+					position: absolute;
+					height: auto;
+					left: auto;
+					bottom: 0;
+					width: 50px;
+					right: 0;
+				}
+			} // span
+			
+			p {
+				text-align: center;
+				color: $white;
+				line-height: 1.2;
+			}
+
+			.btn {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+			}
+			
+		} // a
+		
+		// State results (2 legislators)
+		&.two {
+			width: 62.5%;
+			margin-left: 18.75%;
+			li {
+				width: 40%;
+				margin-left: 20%;
+				&:first-child {
+					margin-left: 0;
+				}
+			}
+		}
+		
+		&.federal li a span {
+			height: 220px;
+		}
+		
+	} // ul
+} // results
+
+@media #{$mobile}
+{
+	.results ul {		
+		li {
+			float: none;
+			width: auto;
+			margin: 0;
+			height: auto;
+			position: relative;
+			margin-left: 0;
+			margin-bottom: 2em;
+		}
+		p {
+			margin-bottom: 1em;
+		}
+		a {
+			span {
+				img {
+					width: 100%;
+					max-width: none;
+					position: relative;
+					left: 0;
+				}
+			} // span
+
+			.btn {
+				position: relative;
+				bottom: auto;
+				left: auto;
+				width: 100%;
+			}
+			
+		} // a
+		
+		// State results (2 legislators)
+		&.two {
+			width: 100%;
+			margin-left: 0;
+			li {
+				width: 100%;
+				margin-left: 0;
+			}
+		}
+		
+		&.federal li a span {
+			height: auto;
+		}
+			
+	} // results
+}
+

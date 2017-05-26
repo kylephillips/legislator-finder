@@ -1,0 +1,24 @@
+//
+// Typography
+// --------------------------------------------------
+p {
+	margin-right: 0 0 1em 0;
+}
+
+ul, ol {
+	list-style-type: disc;
+	padding-left: 1em;
+	margin-bottom: 2em;
+	li {
+		font-size: 1em;
+		margin-top: 1em;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: $light;
+}

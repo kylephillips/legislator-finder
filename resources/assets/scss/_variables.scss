@@ -1,0 +1,29 @@
+//
+// Variables
+// --------------------------------------------------
+
+// Fonts
+$base-font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$base-font-size: 16px;
+$base-line-height: 26px;
+
+// Font Weights
+$light: 100;
+$regular: 400;
+
+// Colors
+$white: #ffffff;
+$black: #000000; 
+$gray-light: #c6c6c6;
+$blue: #151442;
+$green: #1bbc9b;
+$red: #e84c3d;
+$red-dark: #ae372b;
+
+// Paths
+$font-path: '../fonts';
+$image-path: '../images';
+
+// Breakpoints
+$mobile: '(max-width: 767px)';
+$desktop: '(min-width: 768px)';

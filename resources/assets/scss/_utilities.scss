@@ -1,0 +1,47 @@
+//
+// Utility Classes
+// --------------------------------------------------
+
+.clearfix {
+	@include clearfix;
+}
+
+.clear {
+	clear: both;
+}
+
+// Visibility
+.hidden {
+	display: none;
+}
+.visible {
+	display: block;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+// Viewport Utilities
+.hidden-mobile {
+	@media #{$mobile}{
+		display: none;
+	}
+}
+
+.visible-mobile {
+	display: none;
+	@media #{$mobile}{
+		display: block;
+	}
+}
+
+.visible-desktop {
+	@media #{$desktop}{
+		display: block;
+	}
+}
