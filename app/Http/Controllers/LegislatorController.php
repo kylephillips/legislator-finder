@@ -60,12 +60,10 @@ class LegislatorController extends Controller
 	*/
 	public function postResults(Request $request)
 	{
-		$rules = array(
+		$this->validate($request,[
 			'latitude' => 'required|numeric',
 			'longitude' => 'required|numeric'
-		);
-		$validator = Validator::make($request->all(), $rules);
-		if ( $validator->fails() ) return redirect()->route('index_page');
+		]);
 			
 		// Make the Google Civic Info API Call
 		$longitude = $request->input('longitude');
@@ -74,7 +72,10 @@ class LegislatorController extends Controller
 
 		$legislators = ( $request->input('locale') == 'federal' ) ? session('federal_legislators') : session('state_legislators');
 		$locale = ( $request->input('locale') == 'federal' ) ? 'federal' : 'state';
-		$not_found = ( empty($legislators->senate->senators) && empty($legislators->house->representatives) ) ? true : false;
+		
+		// No legislators were found
+		if ( empty($legislators->senate->senators) && empty($legislators->house->representatives) ) 
+			return redirect()->route('index_page')->with('errors', ucfirst($locale) . ' legislators could not be found for the location you have entered.');
 
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
@@ -83,9 +84,7 @@ class LegislatorController extends Controller
 		return view('templates.results')
 			->with('legislators', $legislators)
 			->with('formatted_address', $formatted_address)
-			->with('locale', $locale)
-			->with('noaddress', false)
-			->with('not_found', $not_found);
+			->with('locale', $locale);
 	}
 	
 	/*

@@ -9,12 +9,6 @@
 
 <div class="container results">
 
-	@if($noaddress == true)
-		<div class="alert alert-info">Legislators could not be found. <a href="{{URL::to('/')}}">Please try again.</a></div>
-	@elseif($not_found)
-		<div class="alert alert-info">Your {{$locale}} legislators could not be found. <a href="{{URL::to('/')}}">Please try a different location.</a></div>
-	@else	
-
 	{{-- Federal Legislator Results --}}
 	@if($locale == "federal")
 
@@ -90,8 +84,6 @@
 			@endforeach
 		</ul>
 	@endif{{-- Locale Type --}}
-
-	@endif {{-- If form submitted --}}
 		
 </div>
 

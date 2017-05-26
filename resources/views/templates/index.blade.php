@@ -18,6 +18,14 @@
 		
 		<h1>Find Your Legislators</h1>
 
+		@if (count($errors) > 0)
+			@if ( is_object($errors) )
+				<div class="alert alert-info">{{$errors->first()}}</a></div>
+			@else
+				<div class="alert alert-info">{{$errors}}</a></div>
+			@endif
+		@endif
+
 		<div class="locale-select" data-locale-select>
 			<span class="switch"></span>
 			<ul>

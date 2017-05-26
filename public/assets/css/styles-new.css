@@ -296,11 +296,12 @@ input[type="button"].btn-block {
   display: block;
   background-color: #ffffff;
   color: #000000;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
   padding: .5em;
-  border-left: 4px solid #1bbc9b; }
+  border-left: 4px solid #1bbc9b;
+  line-height: 1.2; }
 
-/* line 13, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_alerts.scss */
+/* line 14, /Users/Kyle/Sites/legislatorfinder/resources/assets/scss/_alerts.scss */
 .alert-error {
   border-left-color: #e84c3d;
   color: #e84c3d; }
