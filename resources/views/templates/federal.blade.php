@@ -60,14 +60,13 @@
 		</span>
 	</section>
 
-	{{-- Map Area --}}
-	@if($chamber == "senator")
-	<h3>{{ $location->state_name }} Senator</h3>
-	@else
-	<h3>{{ $location->state_name }} House District {{ $location->house_district_number }}</h3>
-	@endif
-		
+	{{-- Map Area --}}		
 	<section class="map">
+		@if($chamber == "senator")
+		<h3>{{ $location->state_name }} Senator</h3>
+		@else
+		<h3>{{ $location->state_name }} House District {{ $location->house_district_number }}</h3>
+		@endif
 		<div id="mapcont"></div>
 	</section>
 	
