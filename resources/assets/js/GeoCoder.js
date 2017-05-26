@@ -122,7 +122,6 @@ var GeoCoder = function()
 		geocoder.geocode({
 			'address' : address
 		}, function(results, status){
-			return;
 			if ( status == google.maps.GeocoderStatus.OK ){
 				plugin.formattedAddress = results[0].formatted_address;
 				plugin.lat = results[0].geometry.location.lat();

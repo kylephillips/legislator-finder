@@ -55,7 +55,7 @@ class GoogleCivicInfo
 			session(['federal_legislators' => $federal_legislators]);
 			session(['state_legislators' => $state_legislators]);
 		} catch ( \Exception $e ){
-		
+			throw new \Exception('Legislators could not be found for the provided location');
 		}
 	}
 }

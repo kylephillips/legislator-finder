@@ -79,7 +79,12 @@ class LegislatorController extends Controller
 		// Make the Google Civic Info API Call
 		$longitude = $request->input('longitude');
 		$latitude = $request->input('latitude');
-		$this->google->fetchLegislativeInfo($latitude, $longitude);
+
+		try {
+			$this->google->fetchLegislativeInfo($latitude, $longitude);
+		} catch (\Exception $e){
+			return redirect()->route('index_page')->with('errors', $e->getMessage())->withInput();
+		}
 
 		$legislators = ( $request->input('locale') == 'federal' ) ? session('federal_legislators') : session('state_legislators');
 		$locale = ( $request->input('locale') == 'federal' ) ? 'federal' : 'state';
