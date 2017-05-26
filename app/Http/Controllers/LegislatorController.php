@@ -182,9 +182,9 @@ class LegislatorController extends Controller
 
 		return response()->json([
 			'status' => 'success',
-			'center_lat' => $boundary_data['region']['center_lat'],
-			'center_lng' => $boundary_data['region']['center_lon'],
-			'coordinates' => $boundary_data['shape'][0][0]
+			'center_lat' => $boundary_data->region->center_lat,
+			'center_lng' => $boundary_data->region->center_lon,
+			'coordinates' => $boundary_data->shape[0][0]
 		]);
 	}
 }

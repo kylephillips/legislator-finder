@@ -17,15 +17,15 @@
 		<ul class="federal">
 			{{-- Federal Senators --}}
 			@foreach( $legislators->senate->senators as $key => $senator)
-			<?php $photo = ( isset($senator['photoUrl']) ) ? $senator['photoUrl'] : 'assets/images/leg-not-found.png'; ?>
+			<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : 'assets/images/leg-not-found.png'; ?>
 			<li>
-				<a href="{{ url('federal') }}/senator/{{ $senator['slug'] }}">
+				<a href="{{ url('federal') }}/senator/{{ $senator->slug }}">
 					<h3><em>{{ $legislators->location->state_name }}</em> Senator</h3>
 					<span>
-						<img src="{!! $photo !!}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($senator['party']) !!}
+						<img src="{!! $photo !!}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($senator->party) !!}
 					</span>
-					<p>{!! $senator['name'] !!}</p>
+					<p>{!! $senator->name !!}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
@@ -33,15 +33,15 @@
 			
 			{{-- Federal Representatives --}}
 			@foreach( $legislators->house->representatives as $representative)
-			<?php $photo = ( isset($representative['photoUrl']) ) ? $representative['photoUrl'] : 'assets/images/leg-not-found.png'; ?>
+			<?php $photo = ( isset($representative->photoUrl) ) ? $representative->photoUrl : 'assets/images/leg-not-found.png'; ?>
 			<li>
-				<a href="{{ url('federal') }}/representative/{{ $representative['slug'] }}">
+				<a href="{{ url('federal') }}/representative/{{ $representative->slug }}">
 					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
 					<span>
-						<img src="{!! $photo !!}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($representative['party']) !!}
+						<img src="{!! $photo !!}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($representative->party) !!}
 					</span>
-					<p>{{ $representative['name'] }}</p>
+					<p>{{ $representative->name }}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
@@ -56,13 +56,13 @@
 			{{-- State Senator --}}
 			@foreach($legislators->senate->senators as $senator)
 			<li>
-				<a href="{{ url('state') }}/senator/{{ $senator['slug'] }}">
+				<a href="{{ url('state') }}/senator/{{ $senator->slug }}">
 					<h3><em>District {{ $legislators->location->senate_district_number }}</em> Senator</h3>
 					<span>
-						<img src="{{ $senator['photoUrl'] }}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($senator['party']) !!}
+						<img src="{{ $senator->photoUrl }}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($senator->party) !!}
 					</span>
-					<p>{{ $senator['name'] }}</p>
+					<p>{{ $senator->name }}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
@@ -71,13 +71,13 @@
 			{{-- State Represenatative --}}
 			@foreach($legislators->house->representatives as $representative)
 			<li>
-				<a href="{{ url('state') }}/representative/{{ $representative['slug'] }}">
+				<a href="{{ url('state') }}/representative/{{ $representative->slug }}">
 					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
 					<span>
-						<img src="{{ $representative['photoUrl'] }}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($representative['party']) !!}
+						<img src="{{ $representative->photoUrl }}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($representative->party) !!}
 					</span>
-					<p>{{ $representative['name'] }}</p>
+					<p>{{ $representative->name }}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>

@@ -41,15 +41,15 @@ class GoogleCivicInfo
 	public function fetchLegislativeInfo($latitude, $longitude)
 	{
 		try {
-			$client = new Client();
-			$civic_feed = "https://www.googleapis.com/civicinfo/v2/representatives";
-			$civic_response = $client->get($civic_feed, [
+			$client = new Client(['base_uri' => 'https://www.googleapis.com/civicinfo/v2/']);
+			$response = $client->get('representatives', [
 				'query' => [
 					'key' => env('GOOGLE_MAPS_KEY'),
 					'address' => $latitude . ',' . $longitude
-				]
-			]);		
-			$civic_data = $civic_response->json();
+				],
+				'verify' => false
+			]);	
+			$civic_data = json_decode($response->getBody()->getContents());
 			$federal_legislators = $this->federal_factory->build($civic_data);
 			$state_legislators = $this->state_factory->build($civic_data);
 			session(['federal_legislators' => $federal_legislators]);

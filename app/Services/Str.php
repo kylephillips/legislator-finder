@@ -71,11 +71,11 @@ class Str extends \Illuminate\Support\Str
 	public static function address($address)
 	{
 		$out = '';
-		if ( isset($address['line1']) ) $out .= $address['line1'] . '<br>';
-		if ( isset($address['line2']) ) $out .= $address['line2'] . '<br>';
-		if ( isset($address['city']) ) $out .= $address['city'];
-		if ( isset($address['state']) ) $out .= ', ' . $address['state'];
-		if ( isset($address['zip']) ) $out .= ' ' . $address['zip'];
+		if ( isset($address->line1) ) $out .= $address->line1 . '<br>';
+		if ( isset($address->line2) ) $out .= $address->line2 . '<br>';
+		if ( isset($address->city) ) $out .= $address->city;
+		if ( isset($address->state) ) $out .= ', ' . $address->state;
+		if ( isset($address->zip) ) $out .= ' ' . $address->zip;
 		return $out;
 	}
 

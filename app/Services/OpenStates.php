@@ -26,14 +26,15 @@ class OpenStates
 	public function getDistrictBoundaries($state, $boundary_id)
 	{
 		try {
-			$boundary_client = new Client();
-			$boundary_feed = "openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . strtolower($state) . "/$boundary_id";
-			$boundary_response = $boundary_client->get($boundary_feed, [
+			$url = "http://openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . strtolower($state) . "/" . $boundary_id;
+			$boundary_client = new Client(['base_uri' => $url]);	
+			$boundary_response = $boundary_client->get($url, [
 				'query' => [
 					'apikey' => env('SUNLIGHT_API_KEY')
-				]
-			]);		
-			$boundary_data = $boundary_response->json();
+				],
+				'verify' => false
+			]);
+			$boundary_data = json_decode($boundary_response->getBody()->getContents());
 			return $boundary_data;
 		} catch ( \Exception $e ){
 			return null;

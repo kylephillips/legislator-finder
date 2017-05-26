@@ -17,10 +17,10 @@
 				@else
 				Representative
 				@endif
-				{{ $legislator['name'] }}
+				{{ $legislator->name }}
 			</h1>
 			<h3>
-				{{ $legislator['party'] }},
+				{{ $legislator->party }},
 				@if($chamber == "senator")
 				{{ $location->state_name }}
 				@else
@@ -28,37 +28,37 @@
 				@endif
 			</h3>
 			<ul>
-				@foreach( $legislator['channels'] as $channel )
+				@foreach( $legislator->channels as $channel )
 
-					@if( $channel['type'] == "Twitter" )
-					<li><a href="http://twitter.com/{{ $channel['id'] }}" target="_blank"><i class="icon-twitter"></i></a></li>
+					@if( $channel->type == "Twitter" )
+					<li><a href="http://twitter.com/{{ $channel->id }}" target="_blank"><i class="icon-twitter"></i></a></li>
 					@endif
 
-					@if( $channel['type'] == "Facebook" )
-					<li><a href="http://facebook.com/{{ $channel['id'] }}" target="_blank"><i class="icon-facebook"></i></a></li>
+					@if( $channel->type == "Facebook" )
+					<li><a href="http://facebook.com/{{ $channel->id }}" target="_blank"><i class="icon-facebook"></i></a></li>
 					@endif
 
-					@if( $channel['type'] == "YouTube" )
-					<li><a href="http://youtube.com/{{ $channel['id'] }}" target="_blank"><i class="icon-youtube"></i></a></li>
+					@if( $channel->type == "YouTube" )
+					<li><a href="http://youtube.com/{{ $channel->id }}" target="_blank"><i class="icon-youtube"></i></a></li>
 					@endif
 
 				@endforeach
 				
-				@if( $legislator['urls'] )
-				@foreach( $legislator['urls'] as $url )
+				@if( $legislator->urls )
+				@foreach( $legislator->urls as $url )
 				<li class="website"><a href="{{ $url }}" target="_blank">Website</a></li>
 				@endforeach
 				@endif
 			</ul>
-			@foreach( $legislator['address'] as $add )
+			@foreach( $legislator->address as $add )
 			<p>{!! \Str::address($add) !!}</p>
 			@endforeach
-			<p>{!! \Str::phones($legislator['phones']) !!}</p>
+			<p>{!! \Str::phones($legislator->phones) !!}</p>
 		</article>
 		<span>
-			<?php $photo = ( isset($legislator['photoUrl']) ) ? $legislator['photoUrl'] : 'assets/images/leg-not-found.png'; ?>
-			<img src="{{ $photo }}" alt="{{ $legislator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-			{!! \Str::party_snipe($legislator['party']) !!}
+			<?php $photo = ( isset($legislator->photoUrl) ) ? $legislator->photoUrl : 'assets/images/leg-not-found.png'; ?>
+			<img src="{{ $photo }}" alt="{{ $legislator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+			{!! \Str::party_snipe($legislator->party) !!}
 		</span>
 	</section>
 
