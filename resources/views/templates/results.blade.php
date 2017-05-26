@@ -10,9 +10,7 @@
 <div class="container results">
 
 	@if($noaddress == true)
-		<div class="alert alert-info">
-			Legislators could not be found. <a href="{{URL::to('/')}}">Please try again.</a>
-		</div>
+		<div class="alert alert-info">Legislators could not be found. <a href="{{URL::to('/')}}">Please try again.</a></div>
 	@else	
 
 	{{-- Federal Legislator Results --}}
@@ -20,42 +18,35 @@
 		<h1>Federal Legislators</h1>
 		<h3>for {{$formatted_address}}</h3>
 		<ul class="federal">
-		
-		{{-- Federal Senators --}}
-		@foreach($legislators as $legislator)
-
-			@if( $legislator['chamber'] == "senate")
+			{{-- Federal Senators --}}
+			@foreach( $legislators->senate->senators as $senator)
 			<li>
-				<a href="{{ url('federal') }}/{{ $legislator['bioguide_id'] }}">
-					<h3><em>{{ $legislator['state_name'] }}</em> Senator</h3>
+				<a href="{{ url('federal') }}/{{ $senator['slug'] }}">
+					<h3><em>{{ $legislators->location->state_name }}</em> Senator</h3>
 					<span>
-						<img src="{{asset('assets/images/')}}/federal-legislators/{{$legislator['bioguide_id']}}.jpg" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($legislator) !!}
+						<img src="{!! $senator['photoUrl'] !!}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($senator['party']) !!}
 					</span>
-					<p>{{ \Str::legislator_name($legislator) }}</p>
+					<p>{!! $senator['name'] !!}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
-			@endif
-		@endforeach
-		
-		{{-- Federal Representatives --}}
-		@foreach($legislators as $legislator)
-			@if($legislator['chamber'] == "house")
+			@endforeach
+			
+			{{-- Federal Representatives --}}
+			@foreach( $legislators->house->representatives as $representative)
 			<li>
-				<a href="{{ url('federal') }}/{{ $legislator['bioguide_id'] }}">
-					<h3><em>District {{$legislator['district']}}</em> Representative</h3>
+				<a href="{{ url('federal') }}/{{ $representative['slug'] }}">
+					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
 					<span>
-						<img src="{{asset('assets/images/')}}/federal-legislators/{{$legislator['bioguide_id']}}.jpg" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-						{!! \Str::party_snipe($legislator) !!}
+						<img src="{!! $representative['photoUrl'] !!}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($representative['party']) !!}
 					</span>
-					<p>{{ \Str::legislator_name($legislator) }}</p>
+					<p>{{ $representative['name'] }}</p>
 					<div class="btn btn-block">View Details</div>
 				</a>
 			</li>
-			@endif
-		@endforeach
-	
+			@endforeach	
 		</ul>
 
 	@else
@@ -63,41 +54,35 @@
 		<h1>State Legislators</h1>
 		<h3>for {{$formatted_address}}</h3>
 		<ul class="two">
-			
-			{{-- State Senators --}}
-			@foreach($legislators as $legislator)
-				@if( $legislator['chamber'] == "upper")
-				<li>
-					<a href="{{ url('state') }}/{{$legislator['id']}}">
-						<h3><em>District {{ $legislator['district'] }}</em> Senator</h3>
-						<span>
-							<img src="{{$legislator['photo_url']}}" alt="<?php echo $legislator['full_name']; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-							{!! \Str::party_snipe_state($legislator) !!}
-						</span>
-						<p>{{ $legislator['full_name'] }}</p>
-						<div class="btn btn-block">View Details</div>
-					</a>
-				</li>
-				@endif
+			{{-- State Senator --}}
+			@foreach($legislators->senate->senators as $senator)
+			<li>
+				<a href="{{ url('state') }}/{{ $senator['slug'] }}">
+					<h3><em>District {{ $legislators->location->senate_district_number }}</em> Senator</h3>
+					<span>
+						<img src="{{ $senator['photoUrl'] }}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($senator['party']) !!}
+					</span>
+					<p>{{ $senator['name'] }}</p>
+					<div class="btn btn-block">View Details</div>
+				</a>
+			</li>
 			@endforeach
 			
 			{{-- State Represenatative --}}
-			@foreach($legislators as $legislator)
-				@if( $legislator['chamber'] == "lower")
-				<li>
-					<a href="{{ url('state') }}/{{$legislator['id']}}">
-						<h3><em>District {{$legislator['district']}}</em> Representative</h3>
-						<span>
-							<img src="{{$legislator['photo_url']}}" alt="<?php echo $legislator['full_name']; ?>" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-							{!! \Str::party_snipe_state($legislator) !!}
-						</span>
-						<p>{{ $legislator['full_name'] }}</p>
-						<div class="btn btn-block">View Details</div>
-					</a>
-				</li>
-				@endif
+			@foreach($legislators->house->representatives as $representative)
+			<li>
+				<a href="{{ url('state') }}/{{ $representative['slug'] }}">
+					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
+					<span>
+						<img src="{{ $representative['photoUrl'] }}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						{!! \Str::party_snipe($representative['party']) !!}
+					</span>
+					<p>{{ $representative['name'] }}</p>
+					<div class="btn btn-block">View Details</div>
+				</a>
+			</li>
 			@endforeach
-			
 		</ul>
 	@endif{{-- Locale Type --}}
 

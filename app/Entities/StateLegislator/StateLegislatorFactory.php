@@ -1,6 +1,9 @@
 <?php
 namespace App\Entities\StateLegislator;
 
+/**
+* Builds an object of state legislators data
+*/
 class StateLegislatorFactory
 {
 	public function build($data)
@@ -8,6 +11,7 @@ class StateLegislatorFactory
 		$state = new \stdClass;
 		$state->senate = new \stdClass;
 		$state->house = new \stdClass;
+		$state->location = new \stdClass;
 
 		foreach ( $data['offices'] as $office ){
 			if ( !isset($office['levels']) || !isset($office['roles']) ) continue;
@@ -44,6 +48,14 @@ class StateLegislatorFactory
 		foreach ( $state->house->representatives as $key => $representative ){
 			$state->house->representatives[$key]['slug'] = str_slug($representative['name']);
 		}
+		
+		// Normalize the District numbers for house and senate
+		$s_division_array = explode('/', $state->senate->division_id);
+		$s_district_number = str_replace('sldu:', '', end($s_division_array));
+		$state->location->senate_district_number = $s_district_number;
+		$h_division_array = explode('/', $state->house->division_id);
+		$h_district_number = str_replace('sldl:', '', end($h_division_array));
+		$state->location->house_district_number = $h_district_number;
 
 		return $state;
 	}

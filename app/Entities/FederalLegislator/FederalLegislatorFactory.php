@@ -1,6 +1,9 @@
 <?php
 namespace App\Entities\FederalLegislator;
 
+/**
+* Builds an object of federal legislators data
+*/
 class FederalLegislatorFactory
 {
 	public function build($data)
@@ -50,8 +53,9 @@ class FederalLegislatorFactory
 		// Normalize the House District for fetching map boundaries
 		$division_array = explode('/', $federal->house->division_id);
 		$district_number = str_replace('cd:', '', end($division_array));
-		$federal->location->district_number = $district_number;
-		$federal->location->district_number_formatted = ( strlen($district_number) == 1 ) ? '0' . $district_number : $district_number;
+		$federal->location->house_district_number = $district_number;
+		$federal->location->house_district_number_formatted = ( strlen($district_number) == 1 ) ? '0' . $district_number : $district_number;
+		$federal->location->state_name = $data['divisions'][$federal->senate->division_id]['name'];
 		
 		return $federal;
 	}

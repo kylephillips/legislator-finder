@@ -28,24 +28,26 @@ class Str extends \Illuminate\Support\Str
 	*/
 	public static function party_snipe($legislator)
 	{
-		$party = $legislator['party'];
+		$party = ( is_array($legislator) ) ? $legislator['party'] : $legislator;
+		$party = strtolower(substr($party, 0, 1));
+		$out = '';
 		switch($party){
-			case "R" :
+			case "r" :
 				$url = asset('assets/images/party-snipe-r.png');
 				$out = '<img src="' . $url . '" class="snipe" alt="Republican" />';
 			break;
 		
-			case "D" :
+			case "d" :
 				$url = asset('assets/images/party-snipe-d.png');
 				$out = '<img src="' . $url . '" class="snipe" alt="Democrat" />';
 			break;
 		
-			case "I" :
+			case "i" :
 				$url = asset('assets/images/party-snipe-i.png');
 				$out = '<img src="' . $url . '" class="snipe" alt="Independent" />';
 			break;
 		
-			case "L" :
+			case "l" :
 				$url = asset('assets/images/party-snipe-l.png');
 				$out = '<img src="' . $url . '" class="snipe" alt="Libertarian" />';
 			break;
