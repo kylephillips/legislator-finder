@@ -1,0 +1,17 @@
+//
+// 404 page
+// --------------------------------------------------
+.missing {
+	text-align: center;
+	h1 {
+		font-size: 10em;
+		line-height: .8;
+		color: $green;
+	}
+	p {
+		text-transform: uppercase;
+		font-weight: $light;
+		letter-spacing: .1em;
+		margin-bottom: 2em;
+	}
+}
