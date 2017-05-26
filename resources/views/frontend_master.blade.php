@@ -12,6 +12,6 @@
 </head>
 <body>
 	@yield('content')
-	<div class="sunlight">Data provided by <a href="https://developers.google.com/civic-information/">Google</a>, <a href="https://openstates.org/">Open States</a> and <a href="http://census.gov">census.gov</a></div>
+	<div class="data-sources">Data provided by <a href="https://developers.google.com/civic-information/">Google</a>, <a href="https://openstates.org/">Open States</a> and <a href="http://census.gov">census.gov</a></div>
 </body>
 </html>
