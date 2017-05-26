@@ -61,6 +61,7 @@ var StateMap = function(state, container)
 		});
 		
 		layer.setMap(map);
+		$(plugin.container[0]).removeClass('loading');
 	}
 
 	return plugin.fetchCenter();

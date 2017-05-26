@@ -89,6 +89,7 @@ var StateDistrictMap = function(token, chamber, state, district_number, containe
 			return bounds;
 		}
 		map.fitBounds(districtpoly.getBounds()); 
+		$(plugin.container[0]).removeClass('loading');
 	}
 
 	return plugin.getData();

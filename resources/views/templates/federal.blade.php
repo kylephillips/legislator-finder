@@ -69,7 +69,7 @@
 		@else
 		<h3>{{ $location->state_name }} House District {{ $location->house_district_number }}</h3>
 		@endif
-		<div id="mapcont"></div>
+		<div id="mapcont" class="loading"><i class="icon-spinner"></i></div>
 	</section>
 	
 </div>{{-- Container --}}

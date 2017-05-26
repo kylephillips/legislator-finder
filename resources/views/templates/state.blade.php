@@ -73,7 +73,7 @@
 			House District {{ $district_number }}
 			@endif
 		</h3>
-		<div id="mapcont"></div>
+		<div id="mapcont" class="loading"><i class="icon-spinner"></i></div>
 	</section>
 	
 </div>{{-- Container --}}

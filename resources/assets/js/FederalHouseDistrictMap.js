@@ -71,6 +71,8 @@ var FederalHouseDistrictMap = function(district, state, container)
 			});
 		});
 		map.fitBounds(bounds);
+		
+		$(plugin.container[0]).removeClass('loading');
 	}
 
 	return plugin.getFipsCode();
