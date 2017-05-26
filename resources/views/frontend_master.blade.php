@@ -4,14 +4,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Legislator Finder: Find Your Senators &amp; Representatives</title>	
 	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
-	{{Html::style('assets/css/styles-new.css')}}
+	{{Html::style('assets/css/styles.css')}}
 	<script type="text/javascript" src="//use.typekit.net/nxo4tar.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{env('GOOGLE_MAPS_KEY')}}&libraries=places"></script>
-	@include('includes.scripts')
 </head>
 <body>
 	@yield('content')
-	<div class="sunlight">Data provided by <a href="https://openstates.org/">Open States</a>, <a href="https://developers.google.com/civic-information/">Google</a>, and <a href="http://census.gov">census.gov</a></div>
+	<div class="sunlight">Data provided by <a href="https://developers.google.com/civic-information/">Google</a>, <a href="https://openstates.org/">Open States</a> and <a href="http://census.gov">census.gov</a></div>
 </body>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key={{env('GOOGLE_MAPS_KEY')}}&libraries=places"></script>
+@include('includes.scripts')
 </html>
