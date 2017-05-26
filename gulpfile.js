@@ -33,7 +33,7 @@ gulp.task('sass', function(){
 	return gulp.src(scss)
 		.pipe(sass({sourceComments: 'map', sourceMap: 'sass', style: 'compact'}))
 		.pipe(autoprefix('last 15 version'))
-		// .pipe(minifycss({keepBreaks: false}))
+		.pipe(minifycss({keepBreaks: false}))
 		.pipe(gulp.dest(css))
 		.pipe(livereload())
 		.pipe(notify('Legislator finder styles compiled & compressed.'));
@@ -47,7 +47,7 @@ gulp.task('js', function(){
 	return gulp.src(js_source)
 		.pipe(concat('scripts.min.js'))
 		.pipe(gulp.dest(js_compiled))
-		// .pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest(js_compiled))
 		.pipe(notify('Legislator finder scripts compiles & compressed.'));
 });
