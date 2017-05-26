@@ -19,71 +19,24 @@ class OpenStates
 	}
 
 	/**
-	* Get Federal Legislators
-	* @param string $latitude
-	* @param string $longitude
+	* Get District Boundaries
+	* @param string $state (2 letter abbr)
+	* @param string $boundary_id (formatted boundary id ex: sldu:3)
 	*/
-	public function getFederalLegislators($latitude, $longitude)
+	public function getDistrictBoundaries($state, $boundary_id)
 	{
-		$client = new Client();
-		$response = $client->get('http://congress.api.sunlightfoundation.com/legislators/locate', [
-			'query' => [
-				'latitude' => $latitude,
-				'longitude' => $longitude,
-				'apikey' => $this->apikey
-			]
-		]);
-		$legislators = $response->json();
-		return $legislators['results'];
-	}
-
-	/**
-	* Get State Legislators
-	* @param string $latitude
-	* @param string $longitude
-	*/
-	public function getStateLegislators($latitude, $longitude)
-	{
-		$client = new Client();
-		$response = $client->get('http://openstates.org/api/v1/legislators/geo/', [
-			'query' => [
-				'lat' => $latitude,
-				'long' => $longitude,
-				'apikey' => $this->apikey
-			]
-		]);
-		return $response->json();
-	}
-
-	/**
-	* Get a Single Federal Legislator
-	* @param string $id - bioguide id
-	*/
-	public function getSingleFederalLegislator($id)
-	{
-		$client = new Client();
-		$response = $client->get('http://congress.api.sunlightfoundation.com/legislators', [
-			'query' => [
-				'bioguide_id' => $id,
-				'apikey' => $this->apikey
-			]
-		]);
-		$legislators = $response->json();
-		return $legislators['results'][0];
-	}
-
-	/**
-	* Get a Single State Legislator
-	* @param string $id - bioguide id
-	*/
-	public function getSingleStateLegislator($id)
-	{
-		$client = new Client();
-		$response = $client->get("http://openstates.org/api/v1//legislators/$id", [
-			'query' => [
-				'apikey' => $this->apikey
-			]
-		]);
-		return $response->json();
+		try {
+			$boundary_client = new Client();
+			$boundary_feed = "openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . strtolower($state) . "/$boundary_id";
+			$boundary_response = $boundary_client->get($boundary_feed, [
+				'query' => [
+					'apikey' => env('SUNLIGHT_API_KEY')
+				]
+			]);		
+			$boundary_data = $boundary_response->json();
+			return $boundary_data;
+		} catch ( \Exception $e ){
+			return null;
+		}
 	}
 }

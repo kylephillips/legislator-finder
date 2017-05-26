@@ -12,6 +12,7 @@ class StateLegislatorFactory
 		$state->senate = new \stdClass;
 		$state->house = new \stdClass;
 		$state->location = new \stdClass;
+		$state->location->state = $data['normalizedInput']['state'];
 		
 		foreach ( $data['offices'] as $office ){
 			if ( !isset($office['levels']) || !isset($office['roles']) ) continue;

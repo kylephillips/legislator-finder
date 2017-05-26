@@ -7,6 +7,8 @@ Route::get('results', array('as'=>'no_results', 'uses'=>'LegislatorController@ge
 Route::get('federal/{chamber}/{slug?}', array('as'=>'federal_results','uses'=>'LegislatorController@getSingleFederal'));
 Route::get('state/{chamber}/{slug?}', array('as'=>'state_results','uses'=>'LegislatorController@getSingleState'));
 
+Route::post('state-district-boundaries', array('as'=>'state_district_boundaries', 'uses'=>'LegislatorController@getStateDistrictBoundariesAjax'));
+
 Route::get('404', array('as'=>'missing_page', function(){
 	return view('templates.missing');
 }));

@@ -3,10 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use \GuzzleHttp\Client;
 use \App\Services\OpenStates;
 use \App\Services\GoogleCivicInfo;
 use \App\Entities\FederalLegislator\FederalLegislatorRepository;
+use \App\Entities\StateLegislator\StateLegislatorRepository;
 use Validator;
 
 class LegislatorController extends Controller 
@@ -29,11 +29,18 @@ class LegislatorController extends Controller
 	*/
 	private $federal_legislator_repo;
 
-	public function __construct(OpenStates $openstates, GoogleCivicInfo $google, FederalLegislatorRepository $federal_legislator_repo)
+	/**
+	* State Legislator Repository
+	* @var object StateLegislatorRepository
+	*/
+	private $state_legislator_repo;
+
+	public function __construct(OpenStates $openstates, GoogleCivicInfo $google, FederalLegislatorRepository $federal_legislator_repo, StateLegislatorRepository $state_legislator_repo)
 	{
 		$this->openstates = $openstates;
 		$this->google = $google;
 		$this->federal_legislator_repo = $federal_legislator_repo;
+		$this->state_legislator_repo = $state_legislator_repo;
 	}
 	
 	public function getIndex(Request $request)
@@ -112,44 +119,55 @@ class LegislatorController extends Controller
 	*/
 	public function getSingleState($chamber = null, $slug = null)
 	{
-		$sunlight_key = env('SUNLIGHT_API_KEY');
-		if ( !$id ) return redirect()->route('index_page');
-		$legislator = $this->openstates->getSingleStateLegislator($id);	
+		if ( !$slug || !$chamber ) return redirect()->route('index_page');
+		if ( $chamber !== 'senator' && $chamber !== 'representative' ) return redirect()->route('index_page');
+		$legislators = session('state_legislators');
+		if ( !$legislators ) return redirect()->route('index_page');
+
+		$legislator = ( $chamber == 'senator' ) 
+			? $this->state_legislator_repo->getSenatorBySlug($slug) 
+			: $this->state_legislator_repo->getRepresentativeBySlug($slug);
+
 		if ( !$legislator ) return redirect()->route('index_page');
-			
-		// Get the current term object
-		$current_term = $legislator['roles'][0];
-		$offices = $legislator['offices'];
-		
-		// Get the roles for committees
-		$committees = $legislator['roles'];
-
-		// set the chamber letter for boundary id
-		$chamber_short = ( $legislator['chamber'] == "upper" ) ? "u" : "l";
-
-		// boundary id for fetching district boundary
-		$boundary_id = 'sld' . $chamber_short . ':' . $legislator['district'];
-
-		// lookup the district boundary for the current legislator
-		$boundary_client = new Client();
-		$boundary_feed = "openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . $legislator['state'] . "/$boundary_id";
-		$boundary_response = $boundary_client->get($boundary_feed, [
-			'query' => [
-				'apikey' => $sunlight_key
-				]
-		]);		
-		$boundary_data = $boundary_response->json();
-		$center_lat = $boundary_data['region']['center_lat'];
-		$center_lon = $boundary_data['region']['center_lon'];
-		$coordinates = $boundary_data['shape'][0][0];
+		$location = $legislators->location;	
+		$district_number = ( $chamber == 'senator' ) ? $location->senate_district_number : $location->house_district_number;	
 		
 		return view('templates.state')
 			->with('legislator',$legislator)
-			->with('current_term',$current_term)
-			->with('offices',$offices)
-			->with('committees',$committees)
-			->with('center_lat',$center_lat)
-			->with('center_lon',$center_lon)
-			->with('coordinates',$coordinates);
-	}	
+			->with('chamber',$chamber)
+			->with('district_number',$district_number)
+			->with('location',$location);
+	}
+
+	/*
+	* Get the boundaries for a state district
+	* @return json
+	*/
+	public function getStateDistrictBoundariesAjax(Request $request)
+	{
+		$this->validate($request, [
+			'chamber' => 'required',
+			'district_number' => 'required',
+			'state' => 'required',
+		]);
+
+		// set the chamber letter for boundary id
+		$chamber_short = ( $request->input('chamber') == "senator" ) ? "u" : "l";
+		$district_number = $request->input('district_number');
+		$state = strtolower($request->input('state'));
+
+		// boundary id for fetching district boundary
+		$boundary_id = 'sld' . $chamber_short . ':' . $district_number;
+
+		// lookup the district boundary for the current legislator
+		$boundary_data = $this->openstates->getDistrictBoundaries($state, $boundary_id);
+		if ( !$boundary_data ) return response()->json(['status' => 'error', 'message' => 'The boundaries could not be located.']);
+
+		return response()->json([
+			'status' => 'success',
+			'center_lat' => $boundary_data['region']['center_lat'],
+			'center_lng' => $boundary_data['region']['center_lon'],
+			'coordinates' => $boundary_data['shape'][0][0]
+		]);
+	}
 }

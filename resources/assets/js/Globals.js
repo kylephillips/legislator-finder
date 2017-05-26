@@ -79,3 +79,4 @@ var map_styles = [
 var state_centers_json = '/assets/js/state-centers.json';
 var federal_congressional_districts_geojson = '/assets/js/congressional-districts-115.geojson';
 var state_to_fips_json = '/assets/js/state-to-fips.json';
+var state_district_boundaries = '/state-district-boundaries';
