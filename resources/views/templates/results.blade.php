@@ -11,20 +11,24 @@
 
 	@if($noaddress == true)
 		<div class="alert alert-info">Legislators could not be found. <a href="{{URL::to('/')}}">Please try again.</a></div>
+	@elseif($not_found)
+		<div class="alert alert-info">Your {{$locale}} legislators could not be found. <a href="{{URL::to('/')}}">Please try a different location.</a></div>
 	@else	
 
 	{{-- Federal Legislator Results --}}
 	@if($locale == "federal")
+
 		<h1>Federal Legislators</h1>
 		<h3>for {{$formatted_address}}</h3>
 		<ul class="federal">
 			{{-- Federal Senators --}}
-			@foreach( $legislators->senate->senators as $senator)
+			@foreach( $legislators->senate->senators as $key => $senator)
+			<?php $photo = ( isset($senator['photoUrl']) ) ? $senator['photoUrl'] : 'assets/images/leg-not-found.png'; ?>
 			<li>
-				<a href="{{ url('federal') }}/{{ $senator['slug'] }}">
+				<a href="{{ url('federal') }}/senator/{{ $senator['slug'] }}">
 					<h3><em>{{ $legislators->location->state_name }}</em> Senator</h3>
 					<span>
-						<img src="{!! $senator['photoUrl'] !!}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						<img src="{!! $photo !!}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 						{!! \Str::party_snipe($senator['party']) !!}
 					</span>
 					<p>{!! $senator['name'] !!}</p>
@@ -35,11 +39,12 @@
 			
 			{{-- Federal Representatives --}}
 			@foreach( $legislators->house->representatives as $representative)
+			<?php $photo = ( isset($representative['photoUrl']) ) ? $representative['photoUrl'] : 'assets/images/leg-not-found.png'; ?>
 			<li>
-				<a href="{{ url('federal') }}/{{ $representative['slug'] }}">
+				<a href="{{ url('federal') }}/representative/{{ $representative['slug'] }}">
 					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
 					<span>
-						<img src="{!! $representative['photoUrl'] !!}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+						<img src="{!! $photo !!}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 						{!! \Str::party_snipe($representative['party']) !!}
 					</span>
 					<p>{{ $representative['name'] }}</p>
@@ -57,7 +62,7 @@
 			{{-- State Senator --}}
 			@foreach($legislators->senate->senators as $senator)
 			<li>
-				<a href="{{ url('state') }}/{{ $senator['slug'] }}">
+				<a href="{{ url('state') }}/senator/{{ $senator['slug'] }}">
 					<h3><em>District {{ $legislators->location->senate_district_number }}</em> Senator</h3>
 					<span>
 						<img src="{{ $senator['photoUrl'] }}" alt="{{ $senator['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
@@ -72,7 +77,7 @@
 			{{-- State Represenatative --}}
 			@foreach($legislators->house->representatives as $representative)
 			<li>
-				<a href="{{ url('state') }}/{{ $representative['slug'] }}">
+				<a href="{{ url('state') }}/representative/{{ $representative['slug'] }}">
 					<h3><em>District {{ $legislators->location->house_district_number }}</em> Representative</h3>
 					<span>
 						<img src="{{ $representative['photoUrl'] }}" alt="{{ $representative['name'] }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />

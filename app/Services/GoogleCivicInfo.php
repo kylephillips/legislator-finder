@@ -55,8 +55,7 @@ class GoogleCivicInfo
 			session(['federal_legislators' => $federal_legislators]);
 			session(['state_legislators' => $state_legislators]);
 		} catch ( \Exception $e ){
-			dd($e);
-			// TODO: error handling
+		
 		}
 	}
 }
