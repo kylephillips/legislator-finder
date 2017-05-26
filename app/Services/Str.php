@@ -79,4 +79,18 @@ class Str extends \Illuminate\Support\Str
 		return $out;
 	}
 
+	/**
+	* Return a properly formatted list of legislator phone numbers
+	* @param $phones array returned by Google API
+	*/
+	public static function phones($phones)
+	{
+		$out = '';
+		foreach ( $phones as $key => $phone ){
+			$out .= $phone;
+			if ( $key + 1 < count($phones) ) $out .= ', ';
+		}
+		return $out;
+	}
+
 }

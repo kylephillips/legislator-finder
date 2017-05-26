@@ -53,7 +53,7 @@
 			@foreach( $legislator['address'] as $add )
 			<p>{!! \Str::address($add) !!}</p>
 			@endforeach
-			
+			<p>{!! \Str::phones($legislator['phones']) !!}</p>
 		</article>
 		
 		<span>
