@@ -17,7 +17,6 @@ var css = 'public/assets/css/';
 var js_source = [
 	'resources/assets/js/Globals.js',
 	'resources/assets/js/Toggle.js',
-	'resources/assets/js/LocaleSwitch.js',
 	'resources/assets/js/GeoCoder.js',
 	'resources/assets/js/StateMap.js',
 	'resources/assets/js/FederalHouseDistrictMap.js',

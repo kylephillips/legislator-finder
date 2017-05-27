@@ -12,56 +12,6 @@
 	}
 }
 
-.locale-select {
-	margin-bottom: 50px;
-	background-color: $green;
-	border-radius: 0;
-	position: relative;
-	padding: 5px;
-	ul {
-		@include unstyled;
-		@include clearfix;
-		position: relative;
-		li {
-			float: left;
-			width: 50%;
-			margin: 0;
-			a {
-				font-size: 18px;
-				display: block;
-				height: 40px;
-				line-height: 40px;
-				color: $white;
-				transition: all 200ms ease;
-				&.active {
-					color: $green;
-					cursor: default;
-				}
-			}
-		}
-	}
-	span {
-		position: absolute;
-		width: 50%;
-		height: 40px;
-		background-color: $white;
-		top: 5px;
-		left: 5px;
-		transition: all 200ms ease;
-		&.state {
-			left: 49%;
-			transition: all 200ms ease;
-		}
-	}
-} // locale select
-
-
-// Hide the radios
-.locale-radios {
-	display: none;
-}
-
-
 // Location Button
 #getcoordinates {
 	margin: -30px 0 50px 0;
@@ -75,7 +25,6 @@
 		margin-right: 5px;
 	}
 }
-
 
 // By Address
 .by-address {
