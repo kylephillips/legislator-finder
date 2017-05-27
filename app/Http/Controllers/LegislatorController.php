@@ -53,17 +53,16 @@ class LegislatorController extends Controller
 	/**
 	* For "Back" functionality
 	*/
-	public function getResults($locale)
+	public function getResults()
 	{
-		if ( !$locale ) return redirect()->route('index_page');
 		$formatted_address = session('user_address');
 		if ( !$formatted_address ) return redirect()->route('index_page');
-		$locale = ( $locale == 'federal' ) ? 'federal' : 'state';
-		$legislators = ( $locale == 'federal' ) ? session('federal_legislators') : session('state_legislators');
+		$federal_legislators = session('federal_legislators');
+		$state_legislators = session('state_legislators');
 		return view('templates.results')
-			->with('legislators', $legislators)
-			->with('formatted_address', $formatted_address)
-			->with('locale', $locale);
+			->with('federal_legislators', $federal_legislators)
+			->with('state_legislators', $state_legislators)
+			->with('formatted_address', $formatted_address);
 	}
 	
 	/*
@@ -86,13 +85,9 @@ class LegislatorController extends Controller
 			return redirect()->route('index_page')->with('errors', $e->getMessage())->withInput();
 		}
 
-		$legislators = ( $request->input('locale') == 'federal' ) ? session('federal_legislators') : session('state_legislators');
-		$locale = ( $request->input('locale') == 'federal' ) ? 'federal' : 'state';
+		$federal_legislators = session('federal_legislators');
+		$state_legislators = session('state_legislators');
 		
-		// No legislators were found
-		if ( empty($legislators->senate->senators) && empty($legislators->house->representatives) ) 
-			return redirect()->route('index_page')->with('errors', ucfirst($locale) . ' legislators could not be found for the location you have entered.');
-
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
 			: 'Your Current Location';
@@ -100,9 +95,9 @@ class LegislatorController extends Controller
 		$request->session()->put('user_address', $formatted_address);
 				
 		return view('templates.results')
-			->with('legislators', $legislators)
-			->with('formatted_address', $formatted_address)
-			->with('locale', $locale);
+			->with('state_legislators', $state_legislators)
+			->with('federal_legislators', $federal_legislators)
+			->with('formatted_address', $formatted_address);
 	}
 	
 	/*
