@@ -30,7 +30,7 @@ class OpenStates
 			$boundary_client = new Client(['base_uri' => $url]);	
 			$boundary_response = $boundary_client->get($url, [
 				'query' => [
-					'apikey' => env('SUNLIGHT_API_KEY')
+					'apikey' => $this->apikey
 				],
 				'verify' => false
 			]);
