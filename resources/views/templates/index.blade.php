@@ -12,9 +12,9 @@
 </div>
 
 
-<div class="container small home">
+<div class="address-form-container">
 
-	{{Form::open(['url'=>'results/', 'id'=>'addressform', 'data-address-form' => true])}}
+	
 		
 		<h1>Find Your Legislators</h1>
 
@@ -26,19 +26,18 @@
 			@endif
 		@endif
 		
-		<section class="by-address">
+		{{Form::open(['url'=>'results/', 'class' => 'address-form', 'data-address-form' => true])}}
 			<div id="addresserror" class="alert alert-error" style="display:none" data-error></div>
-			<p>
-				<label for="address">Address</label>
+			<label for="address">Enter Your Address</label>
+			<div class="form-input">
 				<input type="text" id="address" name="address" data-address-input  value="{{ old('address') }}" />
-			</p>
-			<input type="hidden" name="latitude" id="latitude" data-latitude-input>
-			<input type="hidden" name="longitude" id="longitude" data-longitude-input>
-			<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
-			<button type="submit" class="btn btn-red" data-address-submit>Use my Address</button>
-		</section><!-- By Address -->
-	{{Form::close()}}
+				<button type="submit" class="btn btn-red" data-address-submit>Find</button>
+				<input type="hidden" name="latitude" id="latitude" data-latitude-input>
+				<input type="hidden" name="longitude" id="longitude" data-longitude-input>
+				<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
+			</div>
+		{{Form::close()}}
 	
-</div><!-- Container -->
+</div><!-- address-form-container -->
 
 @stop
