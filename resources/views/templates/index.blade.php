@@ -1,6 +1,7 @@
 @extends('frontend_master')
-
 @section('content')
+
+<div class="search-page">
 
 <div class="page-loading" data-loading>
 	<div>
@@ -11,10 +12,7 @@
 	</div>
 </div>
 
-
-<div class="address-form-container">
-
-	
+<div class="address-form-container">	
 		
 		<h1>Find Your Legislators</h1>
 
@@ -27,17 +25,17 @@
 		@endif
 		
 		{{Form::open(['url'=>'results/', 'class' => 'address-form', 'data-address-form' => true])}}
-			<div id="addresserror" class="alert alert-error" style="display:none" data-error></div>
-			<label for="address">Enter Your Address</label>
-			<div class="form-input">
-				<input type="text" id="address" name="address" data-address-input  value="{{ old('address') }}" />
-				<button type="submit" class="btn btn-red" data-address-submit>Find</button>
-				<input type="hidden" name="latitude" id="latitude" data-latitude-input>
-				<input type="hidden" name="longitude" id="longitude" data-longitude-input>
-				<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
-			</div>
+		<div id="addresserror" class="alert alert-error" style="display:none" data-error></div>
+		<div class="form-input">
+			<input type="text" id="address" name="address" data-address-input  value="{{ old('address') }}" />
+			<button type="submit" data-address-submit><i class="icon-arrow_forward"></i></button>
+			<input type="hidden" name="latitude" id="latitude" data-latitude-input>
+			<input type="hidden" name="longitude" id="longitude" data-longitude-input>
+			<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
+		</div>
 		{{Form::close()}}
 	
 </div><!-- address-form-container -->
 
+</div><!-- .search-page -->
 @stop

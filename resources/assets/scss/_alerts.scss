@@ -3,15 +3,14 @@
 // --------------------------------------------------
 .alert {
 	display: block;
-	background-color: $white;
-	color: $black;
-	margin-bottom: 2em;
-	padding: .5em;
-	border-left: 4px solid $green;
+	color: $green;
+	margin-bottom: 1em;
 	line-height: 1.2;
+	font-size: 2em;
+	font-weight: $light;
+	@include smooth;
 }
 
 .alert-error {
-	border-left-color: $red;
 	color: $red;
 }

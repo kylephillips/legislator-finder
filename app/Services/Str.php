@@ -37,6 +37,41 @@ class Str extends \Illuminate\Support\Str
 		}
 		return $out;
 	}
+
+	/*
+	* Return the legislator party css class
+	*/
+	public static function party_class($party)
+	{
+		$party = strtolower(substr($party, 0, 1));
+		$out = '';
+		switch($party){
+			case "r" :
+				$out = 'red';
+			break;
+		
+			case "d" :
+				$out = 'blue';
+			break;
+		
+			case "i" :
+				$out = 'gray';
+			break;
+		
+			case "l" :
+				$out = 'gray';
+			break;
+		}
+		return $out;
+	}
+
+	/*
+	* Return the legislator party letter
+	*/
+	public static function party_letter($party)
+	{
+		return strtoupper(substr($party, 0, 1));
+	}
 	
 	/*
 	* Return properly formatted party name

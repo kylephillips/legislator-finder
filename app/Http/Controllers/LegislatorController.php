@@ -59,10 +59,12 @@ class LegislatorController extends Controller
 		if ( !$formatted_address ) return redirect()->route('index_page');
 		$federal_legislators = session('federal_legislators');
 		$state_legislators = session('state_legislators');
+		$state_name = $federal_legislators->location->state_name;
 		return view('templates.results')
 			->with('federal_legislators', $federal_legislators)
 			->with('state_legislators', $state_legislators)
-			->with('formatted_address', $formatted_address);
+			->with('formatted_address', $formatted_address)
+			->with('state_name', $state_name);
 	}
 	
 	/*
@@ -87,6 +89,7 @@ class LegislatorController extends Controller
 
 		$federal_legislators = session('federal_legislators');
 		$state_legislators = session('state_legislators');
+		$state_name = $federal_legislators->location->state_name;
 		
 		$formatted_address = ( $request->input('formatted_address') ) 
 			? $request->input('formatted_address') 
@@ -97,7 +100,8 @@ class LegislatorController extends Controller
 		return view('templates.results')
 			->with('state_legislators', $state_legislators)
 			->with('federal_legislators', $federal_legislators)
-			->with('formatted_address', $formatted_address);
+			->with('formatted_address', $formatted_address)
+			->with('state_name', $state_name);
 	}
 	
 	/*
@@ -124,7 +128,6 @@ class LegislatorController extends Controller
 			->with('location', $location)
 			->with('division_id', $division_id);
 	}
-	
 	
 	/*
 	* Single State Legislator

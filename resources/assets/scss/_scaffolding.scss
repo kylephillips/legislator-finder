@@ -16,12 +16,10 @@ body {
 	background-color: $blue;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
-	color: $white;
+	color: $black;
 	height: 100%;
 	width: 100%;
 	overflow-x: hidden;
-	background: url('../images/capitol-bg.jpg') no-repeat center center fixed; 
-	background-size: cover;
 }
 
 // Reset fonts for relevant elements
@@ -35,12 +33,12 @@ textarea {
 
 
 a {
-	color: $green;
+	color: $blue;
 	transition: all 200ms ease;
 	text-decoration: none;
 	&:hover,
 	&:focus {
-		color: $red;
+		text-decoration: underline;
 		transition: all 200ms ease;
 	}
 }

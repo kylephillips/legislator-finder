@@ -29,6 +29,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-arrow_forward:before {
+  content: "\e5c8";
+}
 .icon-arrow_down:before {
   content: "\e313";
 }

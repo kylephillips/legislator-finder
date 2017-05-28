@@ -4,21 +4,27 @@
 
 // Fonts
 $base-font-family: "proxima-nova", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-$base-font-size: 16px;
+$base-font-size: 18px;
 $base-line-height: 26px;
 
 // Font Weights
 $light: 100;
 $regular: 400;
+$bold: 700;
+$extra-bold: 800;
+$black-bold: 900;
 
 // Colors
 $white: #ffffff;
 $black: #000000; 
-$gray-light: #c6c6c6;
-$blue: #151442;
+$gray-light: #ecedf1;
+$blue: #0099c5;
 $green: #1bbc9b;
-$red: #e84c3d;
+$red: #a3041e;
 $red-dark: #ae372b;
+$gray: #9498a1;
+$blue-light: #98d5e7;
+$blue-dark: #004c6f;
 
 // Paths
 $font-path: '../fonts';

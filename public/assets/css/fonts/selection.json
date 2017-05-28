@@ -4,6 +4,33 @@
     {
       "icon": {
         "paths": [
+          "M512 170l342 342-342 342-60-60 238-240h-520v-84h520l-238-240z"
+        ],
+        "attrs": [],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "tags": [
+          "arrow_forward"
+        ],
+        "defaultCode": 58824,
+        "grid": 24
+      },
+      "attrs": [],
+      "properties": {
+        "ligatures": "arrow_forward",
+        "id": 50,
+        "order": 10,
+        "prevSize": 48,
+        "code": 58824,
+        "name": "arrow_forward"
+      },
+      "setIdx": 0,
+      "setId": 1,
+      "iconIdx": 50
+    },
+    {
+      "icon": {
+        "paths": [
           "M316 334l196 196 196-196 60 60-256 256-256-256z"
         ],
         "attrs": [],

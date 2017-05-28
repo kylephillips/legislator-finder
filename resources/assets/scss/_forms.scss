@@ -17,13 +17,3 @@ select {
 		outline: none;
 	}
 }
-
-form .half {
-	float: left;
-	clear: both;
-	width: 48%;
-	&.right {
-		float: right;
-		clear: none;
-	}
-}

@@ -2,20 +2,16 @@
 // Primary Navigation
 // --------------------------------------------------
 nav ul {
-	padding-top: 20px;
 	@include unstyled;
+	padding: 1em 0 0 2em;
 	@include clearfix;
 	li {
 		float: left;
 		margin: 0;
 		a {
 			display: block;
-			font-size: 24px;
 			font-weight: $light;
-			padding: 20px;
-			&.back {
-				color: $red;
-			}
+			color: $white;
 		}
 	}
 }
@@ -25,8 +21,8 @@ nav ul {
 	bottom: 0px;
 	text-align: right;
 	width: 100%;
-	background-color: $blue;
 	padding: 5px 20px 5px 0;
 	font-weight: $light;
+	background-color: $gray-light;
 	font-size: .8em;
 }
