@@ -85,11 +85,21 @@
 		z-index: 2;
 		top: 0;
 		transition: all 200ms ease;
+		i {
+			top: 50px;
+			left: 52px;
+			transform: translateY(-50%);
+			z-index: 3;
+			color: $white;
+			font-size: 2em;
+			z-index: 3;
+		}
 		img {
 			width: 100%;
 			max-width: none;
 			position: relative;
 			top: -.2em;
+			z-index: 4;
 		}
 	}
 	

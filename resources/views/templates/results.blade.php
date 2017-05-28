@@ -23,6 +23,7 @@
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($senator->party) !!}</span>
 				<div class="thumbnail">
+					<i class="icon-spinner"></i>
 					<img src="{!! $photo !!}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
 				<h3><em>{{ $federal_legislators->location->state_name }}</em> Senator</h3>
@@ -40,6 +41,7 @@
 				<div class="party {!! \Str::party_class($representative->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
 				<div class="thumbnail">
+					<i class="icon-spinner"></i>
 					<img src="{!! $photo !!}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
 				<h3><em>House District {{ $federal_legislators->location->house_district_number }}</em> Representative</h3>
@@ -61,6 +63,7 @@
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
 				<div class="thumbnail">
+					<i class="icon-spinner"></i>
 					<img src="{{ $senator->photoUrl }}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
 				<h3><em>District {{ $state_legislators->location->senate_district_number }}</em> Senator</h3>
@@ -77,6 +80,7 @@
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
 				<div class="thumbnail">
+					<i class="icon-spinner"></i>
 					<img src="{{ $representative->photoUrl }}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
 				<h3><em>District {{ $state_legislators->location->house_district_number }}</em> Representative</h3>
