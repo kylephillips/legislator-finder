@@ -4,6 +4,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Legislator Finder: Find Your Senators &amp; Representatives</title>	
 	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
 	<link rel="stylesheet" href="/assets/css/styles.css?v={{env('VERSION_NUMBER')}}">
 	<script type="text/javascript" src="//use.typekit.net/nxo4tar.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
