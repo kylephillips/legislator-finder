@@ -253,6 +253,7 @@ var map_styles_old = [
   }
 ];
 
+var map_polygon_fill = '#0099c5';
 var state_centers_json = '/assets/js/state-centers.json';
 var federal_congressional_districts_geojson = '/assets/js/congressional-districts-115.geojson';
 var state_to_fips_json = '/assets/js/state-to-fips.json';

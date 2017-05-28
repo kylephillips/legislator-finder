@@ -3,11 +3,11 @@
 // --------------------------------------------------
 nav ul {
 	@include unstyled;
-	padding: 1em 0 0 2em;
-	@include clearfix;
+	padding: 1em 0 0 0;
 	li {
-		float: left;
+		display: inline-block;
 		margin: 0;
+		margin-left: 1em;
 		a {
 			display: block;
 			font-weight: $light;
@@ -25,4 +25,13 @@ nav ul {
 	font-weight: $light;
 	background-color: $gray-light;
 	font-size: .8em;
+	z-index: 5;
+}
+
+@media #{$mobile}
+{
+	.data-sources {
+		text-align: center;
+		line-height: 1.4;
+	}
 }

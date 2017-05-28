@@ -59,7 +59,7 @@ var FederalHouseDistrictMap = function(district, state, container)
 
 		map.data.addGeoJson(geoJson);
 		map.data.setStyle({
-			fillColor: "#1bbc9b",
+			fillColor: map_polygon_fill,
 			strokeWeight: 0
 		});
 

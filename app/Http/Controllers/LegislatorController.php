@@ -123,7 +123,8 @@ class LegislatorController extends Controller
 		$division_id = ( $chamber == 'senator' ) ? $legislators->senate->division_id : $legislators->house->division_id;
 	
 		// Return view with necessary data
-		return view('templates.federal')
+		return view('templates.single')
+			->with('level', 'federal')
 			->with('chamber', $chamber)
 			->with('legislator', $legislator)
 			->with('location', $location)
@@ -138,6 +139,7 @@ class LegislatorController extends Controller
 		if ( !$slug || !$chamber ) return redirect()->route('index_page');
 		if ( $chamber !== 'senator' && $chamber !== 'representative' ) return redirect()->route('index_page');
 		$legislators = session('state_legislators');
+		$federal_legislators = session('federal_legislators');
 		if ( !$legislators ) return redirect()->route('index_page');
 
 		$legislator = ( $chamber == 'senator' ) 
@@ -145,14 +147,17 @@ class LegislatorController extends Controller
 			: $this->state_legislator_repo->getRepresentativeBySlug($slug);
 
 		if ( !$legislator ) return redirect()->route('index_page');
-		$location = $legislators->location;	
+		$location = $legislators->location;
+		if ( !isset($location->state_name) ) $location->state_name = $federal_legislators->location->state_name;
+
 		$district_number = ( $chamber == 'senator' ) ? $location->senate_district_number : $location->house_district_number;	
 		
-		return view('templates.state')
-			->with('legislator',$legislator)
-			->with('chamber',$chamber)
-			->with('district_number',$district_number)
-			->with('location',$location);
+		return view('templates.single')
+			->with('level', 'state')
+			->with('legislator', $legislator)
+			->with('chamber', $chamber)
+			->with('district_number', $district_number)
+			->with('location', $location);
 	}
 
 	/*

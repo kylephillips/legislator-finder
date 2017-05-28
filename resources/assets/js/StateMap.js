@@ -45,8 +45,8 @@ var StateMap = function(state, container)
 		layer = new google.maps.FusionTablesLayer({
 			styles: [{
 				polygonOptions : {
-					fillColor: "#1bbc9b",
-					strokeColor: "#1bbc9b"
+					fillColor: map_polygon_fill,
+					strokeColor: map_polygon_fill
 				}
 			}],
 			suppressInfoWindows: true

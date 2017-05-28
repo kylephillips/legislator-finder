@@ -76,8 +76,8 @@
 		background-color: $blue;
 		border: 5px solid $gray-light;
 		left: 0;
-		width: 150px;
-		height: 150px;
+		width: 130px;
+		height: 130px;
 		border-radius: 50%;
 		margin-bottom: 1em;
 		overflow: hidden;
@@ -135,9 +135,6 @@
 		}
 		a {
 			display: block;
-			&:hover {
-				text-decoration: none;
-			}
 			h3 {
 				font-size: 1em;
 				line-height: 1.2;
@@ -171,6 +168,7 @@
 				transition: all 200ms ease;
 			}	
 			&:hover {
+				text-decoration: none;
 				.btn {
 					transition: all 200ms ease;
 					background-color: $blue-dark;
@@ -189,3 +187,28 @@
 		
 	} // ul
 } // results
+
+@media #{$mobile}
+{
+	.results {
+		.address {
+			padding: 2em 0 0 0;
+			text-align: center;
+			h3 {
+				font-size: 1em;
+			}
+		}
+		.legislators {
+			padding: 0 0 2em 0;
+		}
+		h1 {
+			font-size: 3em;
+		}
+		.legislator-list {
+			flex-flow: column wrap;
+			li {
+				margin: 0 0 1em 0;
+			}
+		} // ul
+	} // results
+}

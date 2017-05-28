@@ -1,6 +1,6 @@
 @extends('frontend_master')
-
 @section('content')
+
 <nav>
 	<ul>
 		<li><a href="{{URL::to('/')}}">New Search</a></li>
@@ -9,24 +9,32 @@
 </nav>
 
 <div class="container">
+	<div class="legislator-overview">
+	<h1>
+		@if($chamber == "senator")
+		Senator
+		@else
+		Representative
+		@endif
+		{{ $legislator->name }}
+	</h1>
+	</div>
 	<section class="legislator-details">
-				
-		<article>
-			<h1>
-				@if( $chamber == 'senator' )
-				Senator
+		
+		<div class="legislator-card">
+			<div class="party-background {{ \Str::party_class($legislator->party) }}"></div>
+			<div class="thumbnail">
+				<?php $photo = ( isset($legislator->photoUrl) ) ? $legislator->photoUrl : 'assets/images/leg-not-found.png'; ?>
+				<img src="{{ $photo }}" alt="{{ $legislator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+			</div>
+			<h3>
+				{{ $legislator->party }},
+				@if($chamber == "senator")
+				{{ $location->state_name }}
 				@else
-				Representative
+				House District {{ $location->house_district_number }}
 				@endif
-				{{ $legislator->name }}
-			</h1>
-
-			@if( $chamber == 'senator' )
-				<h3>{{$legislator->party}}, Senate District {{$district_number}}</h3>
-			@else
-				<h3>{{$legislator->party}}, House District {{$district_number}}</h3>
-			@endif
-			
+			</h3>	
 			<ul>
 				@foreach( $legislator->channels as $channel )
 
@@ -54,34 +62,29 @@
 			<p>{!! \Str::address($add) !!}</p>
 			@endforeach
 			<p>{!! \Str::phones($legislator->phones) !!}</p>
-		</article>
-		
-		<span>
-			<?php $photo = ( isset($legislator->photoUrl) ) ? $legislator->photoUrl : 'assets/images/leg-not-found.png'; ?>
-			<img src="{{ $photo }}" alt="{{ $legislator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-			{!! \Str::party_snipe($legislator->party) !!}
-		</span>
-		
-	</section>
-	
-	
-	<section class="map">
-		<h3>
-			@if($chamber == "senator")
-			Senate District {{ $district_number }}
-			@else
-			House District {{ $district_number }}
-			@endif
-		</h3>
-		<div id="mapcont" class="loading"><i class="icon-spinner"></i></div>
+		</div><!-- .legislator-card -->
+		<section class="map">
+			<div id="mapcont" class="loading"><i class="icon-spinner"></i></div>
+		</section>
 	</section>
 	
 </div>{{-- Container --}}
 
+@if( $level == 'federal' )
+<script>
+$(document).ready(function(){
+	@if($chamber == "senator")
+		new StateMap("{{ $location->state }}", $('#mapcont'));
+	@else
+		new FederalHouseDistrictMap("{{ $location->house_district_number_formatted }}", "{{ $location->state }}", $('#mapcont'));
+	@endif
+});
+</script>
+@else
 <script>
 	$(document).ready(function(){
 		new StateDistrictMap("{{ csrf_token() }}", "{{ $chamber }}", "{{ $location->state }}", "{{ $district_number }}", $('#mapcont'));
 	});
 </script>
-
+@endif
 @stop

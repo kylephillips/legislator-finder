@@ -70,7 +70,7 @@ var StateDistrictMap = function(token, chamber, state, district_number, containe
 		var districtpoly = new google.maps.Polygon({
 			paths: coordinates,
 			strokeWeight: 0,
-			fillColor: '#1bbc9b',
+			fillColor: map_polygon_fill,
 			fillOpacity: '0.8'
 		});
 		districtpoly.setMap(map);
