@@ -59,6 +59,7 @@ class LegislatorController extends Controller
 		if ( !$formatted_address ) return redirect()->route('index_page');
 		$federal_legislators = session('federal_legislators');
 		$state_legislators = session('state_legislators');
+		if ( !$federal_legislators ) return redirect()->route('index_page');
 		$state_name = $federal_legislators->location->state_name;
 		return view('templates.results')
 			->with('federal_legislators', $federal_legislators)
