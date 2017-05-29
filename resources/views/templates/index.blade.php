@@ -38,4 +38,9 @@
 </div><!-- address-form-container -->
 
 </div><!-- .search-page -->
+<script>
+	$(document).ready(function(){
+		$('[data-address-input]').focus();
+	});
+</script>
 @stop

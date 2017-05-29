@@ -44,6 +44,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($e instanceof TokenMismatchException){
+            return redirect()->route('index_page')->with('error', "Please try again");
+        }
         return parent::render($request, $exception);
     }
 

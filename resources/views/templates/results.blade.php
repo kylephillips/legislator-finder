@@ -13,6 +13,7 @@
 		<h1>Your Legislators</h1>
 		<h3>{{$formatted_address}}</h3>
 	</div>
+
 	<div class="legislators">
 	<ul class="legislator-list federal">
 		{{-- Federal Senators --}}
@@ -92,7 +93,59 @@
 	</ul>
 	</div><!-- .legislators -->
 	@endif
-</div>
-</div>
+
+	@if( !empty($other_officials) )
+	<div class="other-officials">
+		<h2>Other Officials</h2>
+		<div class="inner">
+		@foreach($other_officials as $division => $offices)
+		<h4>{{ $division }}</h4>
+		<ul class="official-list">
+			@foreach($offices as $office)
+			@if( isset($office->official->photoUrl) )
+			<li class="has-thumbnail">
+				<div class="thumbnail">
+					<img src="{{ $office->official->photoUrl }}" alt="{{ $office->official->name }}" />
+				</div>
+			@else
+			<li>
+			@endif
+				<h5>{{ $office->office_name }}</h5>
+				<h6>{{ $office->official->name }} ({{ $office->official->party }})</h6>
+				@foreach($office->official->address as $address)
+				<p>
+					{{ $address->line1 }}
+					@if( isset($address->line2) ) <br>{{$address->line2}} @endif @if( isset($address->city) ) @endif @if( isset($address->state) ) {{ $address->state }} @endif @if( isset($address->zip) ) {{ $address->zip }} @endif
+				</p>
+				@endforeach
+				@if(isset($office->official->channels))
+				<ul class="channels">
+					@foreach( $office->official->channels as $channel )
+
+					@if( $channel->type == "Twitter" )
+					<li><a href="http://twitter.com/{{ $channel->id }}" target="_blank"><i class="icon-twitter"></i></a></li>
+					@endif
+
+					@if( $channel->type == "Facebook" )
+					<li><a href="http://facebook.com/{{ $channel->id }}" target="_blank"><i class="icon-facebook"></i></a></li>
+					@endif
+
+					@if( $channel->type == "YouTube" )
+					<li><a href="http://youtube.com/{{ $channel->id }}" target="_blank"><i class="icon-youtube"></i></a></li>
+					@endif
+
+					@endforeach
+				</ul>
+				@endif
+			</li>
+			@endforeach
+		</ul>
+		@endforeach
+		</div><!-- .inner -->
+	</div>
+	@endif
+
+</div><!-- .container -->
+</div><!-- .results -->
 
 @stop

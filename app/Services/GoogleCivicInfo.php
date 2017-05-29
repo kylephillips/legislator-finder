@@ -4,6 +4,7 @@ namespace App\Services;
 use \GuzzleHttp\Client;
 use \App\Entities\FederalLegislator\FederalLegislatorFactory;
 use \App\Entities\StateLegislator\StateLegislatorFactory;
+use \App\Entities\OtherOfficial\OtherOfficialFactory;
 
 /*
 * Interacts with the Google Civic Information API
@@ -26,11 +27,17 @@ class GoogleCivicInfo
 	*/
 	private $state_factory;
 
-	public function __construct(FederalLegislatorFactory $federal_factory, StateLegislatorFactory $state_factory)
+	/**
+	* Other Official Factory
+	*/
+	private $other_official_factory;
+
+	public function __construct(FederalLegislatorFactory $federal_factory, StateLegislatorFactory $state_factory, OtherOfficialFactory $other_official_factory)
 	{
 		$this->apikey = env('GOOGLE_MAPS_KEY');
 		$this->federal_factory = $federal_factory;
 		$this->state_factory = $state_factory;
+		$this->other_official_factory = $other_official_factory;
 	}
 
 	/**
@@ -50,10 +57,9 @@ class GoogleCivicInfo
 				'verify' => false
 			]);	
 			$civic_data = json_decode($response->getBody()->getContents());
-			$federal_legislators = $this->federal_factory->build($civic_data);
-			$state_legislators = $this->state_factory->build($civic_data);
-			session(['federal_legislators' => $federal_legislators]);
-			session(['state_legislators' => $state_legislators]);
+			session(['federal_legislators' => $this->federal_factory->build($civic_data)]);
+			session(['state_legislators' => $this->state_factory->build($civic_data)]);
+			session(['other_officials' => $this->other_official_factory->build($civic_data)]);
 		} catch ( \Exception $e ){
 			throw new \Exception('Legislators could not be found for the provided location');
 		}
