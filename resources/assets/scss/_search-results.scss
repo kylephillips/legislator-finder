@@ -193,13 +193,15 @@
 	margin-bottom: 5em;
 	.inner {
 		background-color: $gray-light;
-		padding: 1em;
+		padding: 2em;
 	}
 	h4 {
 		font-weight: $extra-bold;
-		font-size: 1.5em;
+		font-size: 1.75em;
 		color: $blue;
 		margin-bottom: .5em;
+		border-bottom: 1px solid darken($gray-light, 8%);
+		padding-bottom: .5em;
 	}
 	h5 {
 		font-weight: $extra-bold;
@@ -211,12 +213,19 @@
 	}
 	.official-list {
 		@include unstyled;
+		@include clearfix;
 		margin-bottom: 1em;
 		li {
 			position: relative;
-			border-top: 1px solid darken($gray-light, 6%);
 			margin: 0;
 			padding: 1em 0;
+			float: left;
+			width: 45%;
+			clear: both;
+			&:nth-child(even){
+				float: right;
+				clear: none;
+			}
 			&.has-thumbnail {
 				padding-left: 100px;
 				min-height: 100px;
@@ -238,6 +247,8 @@
 				display: inline-block;
 				margin: 0;
 				padding: 0;
+				float: none;
+				width: auto;
 				a {
 					display: block;
 					width: 40px;
