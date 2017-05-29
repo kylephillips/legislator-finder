@@ -194,6 +194,7 @@
 	.inner {
 		background-color: $gray-light;
 		padding: 2em;
+		box-shadow: 3px 3px 30px 0 rgba(0,0,0,.2);
 	}
 	h4 {
 		font-weight: $extra-bold;
@@ -214,7 +215,7 @@
 	.official-list {
 		@include unstyled;
 		@include clearfix;
-		margin-bottom: 1em;
+		margin-bottom: 3em;
 		li {
 			position: relative;
 			margin: 0;
@@ -291,4 +292,15 @@
 			}
 		} // ul
 	} // results
+
+	.other-officials {
+		padding: 0;
+		.inner {
+			padding: 1em;
+		}
+		.official-list li {
+			float: none;
+			width: 100%;
+		}
+	}
 }

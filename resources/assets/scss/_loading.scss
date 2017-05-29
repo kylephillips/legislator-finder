@@ -46,3 +46,14 @@
 		transform-origin: center center;
 	}
 }
+
+@media #{$mobile}
+{
+	.page-loading p {
+		font-size: 1.5em;
+		line-height: 1.4;
+		i {
+			font-size: 2em;
+		}
+	}
+}
