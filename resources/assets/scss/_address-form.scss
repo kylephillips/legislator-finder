@@ -85,4 +85,11 @@
 		margin-bottom: .5em;
 		font-size: 3em;
 	}
+	.address-form input[type="text"]{
+		font-size: 1.5em;
+	}
+	.address-form .alert {
+		font-size: 1.4em;
+		background-color: $white;
+	}
 }
