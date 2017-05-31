@@ -101,7 +101,18 @@
 			top: -.2em;
 			z-index: 4;
 		}
-	}
+		&.no-photo {
+			background-color: $gray;
+			color: $white;
+			span {
+				position: relative;
+				display: block;
+				top: 42px;
+				font-size: 2em;
+				@include smooth;
+			}
+		}
+	} // .thumbnail
 	
 	.legislator-list {
 		@include unstyled();

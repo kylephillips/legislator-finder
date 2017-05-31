@@ -23,10 +23,17 @@
 		
 		<div class="legislator-card">
 			<div class="party-background {{ \Str::party_class($legislator->party) }}"></div>
-			<div class="thumbnail">
-				<?php $photo = ( isset($legislator->photoUrl) ) ? $legislator->photoUrl : 'assets/images/leg-not-found.png'; ?>
-				<img src="{{ $photo }}" alt="{{ $legislator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
-			</div>
+			<?php $photo = ( isset($legislator->photoUrl) ) ? $legislator->photoUrl : null; ?>
+			@if($photo)
+				<div class="thumbnail">
+					<i class="icon-spinner"></i>
+					<img src="{!! $photo !!}" alt="{{ $legislator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+				</div>
+				@else
+				<div class="thumbnail no-photo">
+					<span>{!! \Str::initials($legislator->name) !!}</span>
+				</div>
+				@endif
 			<h3>
 				{{ $legislator->party }},
 				@if($chamber == "senator")

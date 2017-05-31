@@ -128,4 +128,18 @@ class Str extends \Illuminate\Support\Str
 		return $out;
 	}
 
+	/**
+	* Return first and last name initials for a legislator
+	* @param $legislator - Full legislator Name
+	*/
+	public static function initials($legislator)
+	{
+		$out = '';
+		$name_array = explode(' ', $legislator);
+		foreach( $name_array as $key => $name ){
+			$out .= strtoupper(substr($name, 0, 1));
+		}
+		return $out;
+	}
+
 }

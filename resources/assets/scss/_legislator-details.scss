@@ -56,6 +56,16 @@
 		img {
 			width: 100%;
 		}
+		&.no-photo {
+			color: $white;
+			span {
+				position: relative;
+				display: block;
+				top: 60px;
+				font-size: 2em;
+				@include smooth;
+			}
+		}
 	} // thumbnail
 
 	h3 {

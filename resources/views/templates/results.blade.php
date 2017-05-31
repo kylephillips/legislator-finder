@@ -18,15 +18,21 @@
 	<ul class="legislator-list federal">
 		{{-- Federal Senators --}}
 		@foreach( $federal_legislators->senate->senators as $key => $senator)
-		<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : 'assets/images/leg-not-found.png'; ?>
+		<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : null; ?>
 		<li>
 			<a href="{{ url('federal') }}/senator/{{ $senator->slug }}">	
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($senator->party) !!}</span>
+				@if($photo)
 				<div class="thumbnail">
 					<i class="icon-spinner"></i>
 					<img src="{!! $photo !!}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
+				@else
+				<div class="thumbnail no-photo">
+					<span>{!! \Str::initials($senator->name) !!}</span>
+				</div>
+				@endif
 				<h3><em>{{ $federal_legislators->location->state_name }}</em> Senator</h3>
 				<p>{!! $senator->name !!}</p>
 				<div class="btn btn-block">View Details</div>
@@ -36,15 +42,21 @@
 		
 		{{-- Federal Representatives --}}
 		@foreach( $federal_legislators->house->representatives as $representative)
-		<?php $photo = ( isset($representative->photoUrl) ) ? $representative->photoUrl : 'assets/images/leg-not-found.png'; ?>
+		<?php $photo = ( isset($representative->photoUrl) ) ? $representative->photoUrl : null; ?>
 		<li>
 			<a href="{{ url('federal') }}/representative/{{ $representative->slug }}">
 				<div class="party {!! \Str::party_class($representative->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
+				@if($photo)
 				<div class="thumbnail">
 					<i class="icon-spinner"></i>
 					<img src="{!! $photo !!}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
+				@else
+				<div class="thumbnail no-photo">
+					<span>{!! \Str::initials($representative->name) !!}</span>
+				</div>
+				@endif
 				<h3><em>House District {{ $federal_legislators->location->house_district_number }}</em> Representative</h3>
 				<p>{{ $representative->name }}</p>
 				<div class="btn btn-block">View Details</div>
@@ -59,14 +71,21 @@
 	<ul class="legislator-list inline">
 		{{-- State Senator --}}
 		@foreach($state_legislators->senate->senators as $senator)
+		<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : null; ?>
 		<li>
 			<a href="{{ url('state') }}/senator/{{ $senator->slug }}">
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
-				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
+				<span class="party-letter">{!! \Str::party_letter($senator->party) !!}</span>
+				@if($photo)
 				<div class="thumbnail">
 					<i class="icon-spinner"></i>
-					<img src="{{ $senator->photoUrl }}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+					<img src="{!! $photo !!}" alt="{{ $senator->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
+				@else
+				<div class="thumbnail no-photo">
+					<span>{!! \Str::initials($senator->name) !!}</span>
+				</div>
+				@endif
 				<h3><em>District {{ $state_legislators->location->senate_district_number }}</em> Senator</h3>
 				<p>{{ $senator->name }}</p>
 				<div class="btn btn-block">View Details</div>
@@ -76,14 +95,21 @@
 		
 		{{-- State Represenatative --}}
 		@foreach($state_legislators->house->representatives as $representative)
+		<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : null; ?>
 		<li>
 			<a href="{{ url('state') }}/representative/{{ $representative->slug }}">
 				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
+				@if($photo)
 				<div class="thumbnail">
 					<i class="icon-spinner"></i>
-					<img src="{{ $representative->photoUrl }}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
+					<img src="{!! $photo !!}" alt="{{ $representative->name }}" onerror="this.src='{{ asset('assets/images/') }}/leg-not-found.png'" />
 				</div>
+				@else
+				<div class="thumbnail no-photo">
+					<span>{!! \Str::initials($representative->name) !!}</span>
+				</div>
+				@endif
 				<h3><em>District {{ $state_legislators->location->house_district_number }}</em> Representative</h3>
 				<p>{{ $representative->name }}</p>
 				<div class="btn btn-block">View Details</div>
