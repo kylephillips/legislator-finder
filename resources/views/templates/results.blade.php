@@ -95,10 +95,10 @@
 		
 		{{-- State Represenatative --}}
 		@foreach($state_legislators->house->representatives as $representative)
-		<?php $photo = ( isset($senator->photoUrl) ) ? $senator->photoUrl : null; ?>
+		<?php $photo = ( isset($representative->photoUrl) ) ? $representative->photoUrl : null; ?>
 		<li>
 			<a href="{{ url('state') }}/representative/{{ $representative->slug }}">
-				<div class="party {!! \Str::party_class($senator->party) !!}"></div>
+				<div class="party {!! \Str::party_class($representative->party) !!}"></div>
 				<span class="party-letter">{!! \Str::party_letter($representative->party) !!}</span>
 				@if($photo)
 				<div class="thumbnail">
