@@ -137,13 +137,21 @@
 			<li>
 			@endif
 				<h5>{{ $office->office_name }}</h5>
-				<h6>{{ $office->official->name }} ({{ $office->official->party }})</h6>
+				<h6>{{ $office->official->name }} 
+				@if(isset($office->official->party))
+				({{ $office->official->party }})
+				@endif
+				</h6>
+
+				@if(isset($office->offical->address))
 				@foreach($office->official->address as $address)
 				<p>
 					{{ $address->line1 }}
 					@if( isset($address->line2) ) <br>{{$address->line2}} @endif @if( isset($address->city) ) @endif @if( isset($address->state) ) {{ $address->state }} @endif @if( isset($address->zip) ) {{ $address->zip }} @endif
 				</p>
 				@endforeach
+				@endif
+				
 				@if(isset($office->official->channels))
 				<ul class="channels">
 					@foreach( $office->official->channels as $channel )
