@@ -15,13 +15,16 @@
 <div class="address-form-container">	
 		
 		<h1>Find Your Legislators</h1>
-
-		@if (count($errors) > 0)
+		@if ( is_array($errors) && count($errors) > 0)
 			@if ( is_object($errors) )
 				<div class="alert alert-info">{{$errors->first()}}</a></div>
 			@else
 				<div class="alert alert-info">{{$errors}}</a></div>
 			@endif
+		@endif
+
+		@if ( is_string($errors) )
+		<div class="alert alert-info">{{$errors}}</a></div>
 		@endif
 		
 		<form method="POST" action="{{ route('results') }}" class="address-form" data-address-form="true">

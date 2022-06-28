@@ -14,7 +14,7 @@ use App\Http\Controllers\LegislatorController;
 |
 */
 
-Route::get('/', [LegislatorController::class, 'getIndex'])->name('getIndex');
+Route::get('/', [LegislatorController::class, 'getIndex'])->name('index_page');
 Route::post('results', [LegislatorController::class, 'postResults'])->name('results');
 Route::get('results', [LegislatorController::class, 'getResults'])->name('results_back');
 
