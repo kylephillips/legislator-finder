@@ -1,15 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use \App\Services\OpenStates;
 use \App\Services\GoogleCivicInfo;
 use \App\Entities\FederalLegislator\FederalLegislatorRepository;
 use \App\Entities\StateLegislator\StateLegislatorRepository;
-use Validator;
 
-class LegislatorController extends Controller 
+class LegislatorController extends BaseController 
 {
 	/**
 	* Open States Interaction Service Class
@@ -75,7 +74,7 @@ class LegislatorController extends Controller
 	*/
 	public function postResults(Request $request)
 	{
-		$this->validate($request,[
+		$validated = $request->validate([
 			'latitude' => 'required|numeric',
 			'longitude' => 'required|numeric'
 		]);
@@ -171,7 +170,7 @@ class LegislatorController extends Controller
 	*/
 	public function getStateDistrictBoundariesAjax(Request $request)
 	{
-		$this->validate($request, [
+		$request->validate([
 			'chamber' => 'required',
 			'district_number' => 'required',
 			'state' => 'required',
@@ -191,9 +190,9 @@ class LegislatorController extends Controller
 
 		return response()->json([
 			'status' => 'success',
-			'center_lat' => $boundary_data->region->center_lat,
-			'center_lng' => $boundary_data->region->center_lon,
-			'coordinates' => $boundary_data->shape[0][0]
+			'center_lat' => $boundary_data->centroid->coordinates[0],
+			'center_lng' => $boundary_data->centroid->coordinates[1],
+			'coordinates' => $boundary_data->shape->coordinates
 		]);
 	}
 }

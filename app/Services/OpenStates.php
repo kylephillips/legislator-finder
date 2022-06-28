@@ -26,7 +26,7 @@ class OpenStates
 	public function getDistrictBoundaries($state, $boundary_id)
 	{
 		try {
-			$url = "http://openstates.org/api/v1/districts/boundary/ocd-division/country:us/state:" . strtolower($state) . "/" . $boundary_id;
+			$url = "http://data.openstates.org/boundaries/2018/ocd-division/country:us/state:" . strtolower($state) . "/" . $boundary_id . '.json';
 			$boundary_client = new Client(['base_uri' => $url]);	
 			$boundary_response = $boundary_client->get($url, [
 				'query' => [

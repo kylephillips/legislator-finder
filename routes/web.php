@@ -1,9 +1,24 @@
 <?php
-Route::get('/', array('as'=>'index_page','uses'=>'LegislatorController@getIndex'));
-Route::post('results', array('as'=>'results', 'uses'=>'LegislatorController@postResults'));
-Route::get('results', array('as'=>'results_back', 'uses'=>'LegislatorController@getResults'));
 
-Route::get('federal/{chamber}/{slug?}', array('as'=>'federal_results','uses'=>'LegislatorController@getSingleFederal'));
-Route::get('state/{chamber}/{slug?}', array('as'=>'state_results','uses'=>'LegislatorController@getSingleState'));
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LegislatorController;
 
-Route::post('state-district-boundaries', array('as'=>'state_district_boundaries', 'uses'=>'LegislatorController@getStateDistrictBoundariesAjax'));
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', [LegislatorController::class, 'getIndex'])->name('getIndex');
+Route::post('results', [LegislatorController::class, 'postResults'])->name('results');
+Route::get('results', [LegislatorController::class, 'getResults'])->name('results_back');
+
+Route::get('federal/{chamber}/{slug?}', [LegislatorController::class, 'getSingleFederal'])->name('federal_results');
+Route::get('state/{chamber}/{slug?}', [LegislatorController::class, 'getSingleState'])->name('state_results');
+
+Route::post('state-district-boundaries', [LegislatorController::class, 'getStateDistrictBoundariesAjax'])->name('state_district_boundaries');

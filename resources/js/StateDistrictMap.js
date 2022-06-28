@@ -57,8 +57,8 @@ var StateDistrictMap = function(token, chamber, state, district_number, containe
 
 		// Format the coordinates into polygon coordinates
 		var coordinates = [];
-		for ( var i = 0; i < plugin.boundary_data.coordinates.length; i++ ){
-			var point = plugin.boundary_data.coordinates[i];
+		for ( var i = 0; i < plugin.boundary_data.coordinates[0][0].length; i++ ){
+			var point = plugin.boundary_data.coordinates[0][0][i];
 			point = {
 				lat: point[1],
 				lng: point[0]

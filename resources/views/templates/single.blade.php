@@ -41,8 +41,9 @@
 				@else
 				House District {{ $location->house_district_number }}
 				@endif
-			</h3>	
+			</h3>
 			<ul>
+				@if( isset($legislator->channels) )
 				@foreach( $legislator->channels as $channel )
 
 					@if( $channel->type == "Twitter" )
@@ -58,6 +59,7 @@
 					@endif
 
 				@endforeach
+				@endif;
 				
 				@if( $legislator->urls )
 				@foreach( $legislator->urls as $url )

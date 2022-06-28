@@ -15,53 +15,49 @@ var css = 'public/assets/css/';
 
 // JS Paths
 var js_source = [
-	'resources/assets/js/Globals.js',
-	'resources/assets/js/Toggle.js',
-	'resources/assets/js/GeoCoder.js',
-	'resources/assets/js/StateMap.js',
-	'resources/assets/js/FederalHouseDistrictMap.js',
-	'resources/assets/js/StateDistrictMap.js',
-	'resources/assets/js/Bootstrap.js'
+	'resources/js/Globals.js',
+	'resources/js/Toggle.js',
+	'resources/js/GeoCoder.js',
+	'resources/js/StateMap.js',
+	'resources/js/FederalHouseDistrictMap.js',
+	'resources/js/StateDistrictMap.js',
+	'resources/js/Bootstrap.js'
 ];
 var js_compiled = 'public/assets/js/';
 
 /**
-* Complie the front-end styles and output
+* Compile the front-end styles and output
 */
-gulp.task('sass', function(){
+var styles = function(){
 	return gulp.src(scss)
 		.pipe(sass({sourceComments: 'map', sourceMap: 'sass', style: 'compact'}))
-		.pipe(autoprefix('last 15 version'))
+		.pipe(autoprefix('last 5 version'))
 		.pipe(minifycss({keepBreaks: false}))
 		.pipe(gulp.dest(css))
 		.pipe(livereload())
 		.pipe(notify('Legislator finder styles compiled & compressed.'));
-});
-
+}
 
 /**
-* Concatenate and uglify scripts
+* Concatenate and minify scripts
 */
-gulp.task('js', function(){
+var scripts = function(){
 	return gulp.src(js_source)
 		.pipe(concat('scripts.min.js'))
-		.pipe(gulp.dest(js_compiled))
 		.pipe(uglify())
-		.pipe(gulp.dest(js_compiled))
-		.pipe(notify('Legislator finder scripts compiles & compressed.'));
-});
+		.pipe(gulp.dest(js_compiled));
+};
 
 /**
 * Watch Task
 */
 gulp.task('watch', function(){
 	livereload.listen();
-	gulp.watch(['resources/assets/scss/*']).on('change', livereload.changed);
-	gulp.watch(scss, ['sass']);
-	gulp.watch(js_source, ['js']);
+	gulp.watch(scss, gulp.series(styles));
+	gulp.watch(js_source, gulp.series(scripts));
 });
 
 /**
 * Default
 */
-gulp.task('default', ['sass', 'js', 'watch']);
+gulp.task('default', gulp.series(styles, scripts, 'watch'));

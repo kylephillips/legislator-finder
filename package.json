@@ -1,17 +1,29 @@
 {
-  "name": "legislator-finder",
-  "version": "0.0.1",
-  "description": "Legislator Finder Website",
-  "author": "Kyle Phillips <kylephillipsdesign@gmail.com>",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "3.1.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-notify": "^2.2.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-watch": "^4.3.9",
-    "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^2.0.0"
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "axios": "^0.25",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "gulp": "4.0.2",
+        "gulp-autoprefixer": "7.0.1",
+        "gulp-concat": "^2.6.1",
+        "gulp-livereload": "4.0.2",
+        "gulp-minify-css": "1.2.4",
+        "gulp-notify": "3.2.0",
+        "gulp-sass": "4.1.1",
+        "gulp-uglify": "3.0.2",
+        "gulp-watch": "5.0.1",
+        "node-sass": "^4.14.1",
+        "pump": "3.0.0"
     }
 }

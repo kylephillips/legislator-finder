@@ -45,7 +45,7 @@ class FederalLegislatorFactory
 		$federal->house->division_id = $house_office->divisionId;
 		$federal->house->representatives = $representatives;
 
-		// Add slugs to the represenatatives
+		// Add slugs to the representatives
 		foreach ( $federal->house->representatives as $key => $representative ){
 			$federal->house->representatives[$key]->slug = str_slug($representative->name);
 		}

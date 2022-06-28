@@ -24,16 +24,18 @@
 			@endif
 		@endif
 		
-		{{Form::open(['url'=>'results/', 'class' => 'address-form', 'data-address-form' => true])}}
-		<div id="addresserror" class="alert alert-error" style="display:none" data-error></div>
-		<div class="form-input">
-			<input type="text" id="address" name="address" data-address-input  value="{{ old('address') }}" />
-			<button type="submit" data-address-submit><i class="icon-arrow_forward"></i></button>
-			<input type="hidden" name="latitude" id="latitude" data-latitude-input>
-			<input type="hidden" name="longitude" id="longitude" data-longitude-input>
-			<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
-		</div>
-		{{Form::close()}}
+		<form method="POST" action="{{ route('results') }}" class="address-form" data-address-form="true">
+			@method('POST')
+			<div id="addresserror" class="alert alert-error" style="display:none" data-error></div>
+			<div class="form-input">
+				@csrf
+				<input type="text" id="address" name="address" data-address-input  value="{{ old('address') }}" />
+				<button type="submit" data-address-submit><i class="icon-arrow_forward"></i></button>
+				<input type="hidden" name="latitude" id="latitude" data-latitude-input>
+				<input type="hidden" name="longitude" id="longitude" data-longitude-input>
+				<input type="hidden" name="formatted_address" id="formatted_address" data-formatted-address-input>
+			</div>
+		</form>
 	
 </div><!-- address-form-container -->
 
