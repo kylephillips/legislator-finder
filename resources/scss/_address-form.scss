@@ -79,6 +79,11 @@
 	}
 }
 
+.pac-container {
+	border-radius: .5rem;
+}
+
+
 @media #{$mobile}
 {
 	.address-form-container h1 {

@@ -9,7 +9,7 @@ var uglify = require('gulp-uglify');
 
 // Style Paths
 var scss = [
-	'resources/assets/scss/*'
+	'resources/scss/*'
 ]
 var css = 'public/assets/css/';
 

@@ -1,0 +1,27 @@
+.pac-container {
+	box-shadow: none;
+	border: 0;
+	border-top: 0;
+	border-radius: 0 0 .5em .5em;
+	z-index: 9999;
+	overflow: visible;
+	box-sizing: content-box;
+	&.pac-logo:after {
+		background-position: right 30px center;
+	}
+	.pac-item {
+		border: 0;
+		color: #666666;
+		padding: 10px 20px;
+		.pac-item-query {
+			color: #666666;
+		}
+		.pac-icon {
+			display: none;
+		}
+		&:first-child {
+			position: relative;
+			
+		}
+	}
+}
